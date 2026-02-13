@@ -1,5 +1,15 @@
-export const MobileMenuOverlay = () => {
+type MobileMenuOverlayProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export const MobileMenuOverlay = ({ isOpen, onClose }: MobileMenuOverlayProps) => {
+  if (!isOpen) return null;
+
   return (
-    <div className="absolute bg-white box-border caret-transparent hidden h-[940px] w-full z-[-1] left-0 top-[60px] md:static md:bg-transparent md:h-auto md:w-auto md:z-auto md:left-auto md:top-auto"></div>
+    <div
+      onClick={onClose}
+      className="fixed bg-black/20 box-border caret-transparent h-dvh w-full z-[-1] left-0 top-[60px] md:hidden"
+    />
   );
 };
