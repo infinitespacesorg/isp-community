@@ -6,7 +6,7 @@ import { Footer } from "@/sections/Footer";
 export const SocialPage = () => {
   const { data: posts, isPending, error } = useSocialPosts();
   const { create, isPending: isCreating } = useCreatePost();
-  const { user, isAnonymous } = useAuth();
+  const { isAnonymous, login } = useAuth();
   const [content, setContent] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,6 +29,20 @@ export const SocialPage = () => {
             <h1 className="text-4xl font-black box-border caret-transparent tracking-[-0.36px] leading-[35.28px] mb-10 md:text-[44.8px] md:tracking-[-0.48px] md:leading-[43.904px]">
               Social Feed
             </h1>
+
+            {isAnonymous && (
+              <div className="box-border caret-transparent mb-14 p-6 border border-stone-300 rounded-2xl md:mb-20 text-center">
+                <p className="text-base box-border caret-transparent leading-[24px] mb-4">
+                  Sign in to share your thoughts with the community.
+                </p>
+                <button
+                  onClick={login}
+                  className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 inline-flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik_mono hover:bg-violet-600 cursor-pointer"
+                >
+                  Sign In
+                </button>
+              </div>
+            )}
 
             {!isAnonymous && (
               <div className="box-border caret-transparent mb-14 p-6 border border-stone-300 rounded-2xl md:mb-20">
