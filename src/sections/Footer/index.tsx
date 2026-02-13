@@ -3,7 +3,7 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn";
 import { FooterCredits } from "@/sections/Footer/components/FooterCredits";
 import { FooterLinks } from "@/sections/Footer/components/FooterLinks";
 
-const accountsUrl = import.meta.env.VITE_ACCOUNTS_URL || "https://accounts.infinitespaces.co";
+const accountsUrl = import.meta.env.VITE_ACCOUNTS_URL || "https://accounts.infinitespaces.io";
 
 function getAuthUrl(path: string) {
   const callbackUrl = `${window.location.origin}/auth/callback`;
