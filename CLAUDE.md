@@ -22,7 +22,9 @@ Public community website for Infinite Spaces. React + Vite SPA deployed to Cloud
 Cloudflare Pages (static files). SPA routing via `_redirects` file.
 
 ## Data
-Currently uses static mock data in `src/data/`. Will migrate to Supabase client-side queries (ADR-001).
+Data hooks in `src/hooks/useData.ts` query Supabase tables via `@supabase/supabase-js` (ADR-001). Falls back to static mock data (`src/data/mock-data.ts`) when Supabase is not configured.
+
+Tables: `community_posts`, `community_gallery`, `profiles`, `community_articles`, `community_jobs`, `pricing_plans`, `newsletter_subscriptions`.
 
 ## Auth
-Currently placeholder. Will integrate `@infinitespaces/auth` with OIDC redirect to Fabric Console (ADR-008).
+Uses Supabase auth session management via `src/hooks/useAuth.ts`. Login/signup redirects to Fabric Console (OIDC). See ADR-008.
