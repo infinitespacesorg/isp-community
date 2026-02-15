@@ -1,12 +1,14 @@
 import { useAuth } from "@/hooks/useAuth";
 
+const wrapperClass = "flex items-center shrink-0 h-[42px] order-3 ml-4 mt-20 md:block md:h-auto md:order-none md:ml-0 md:mt-0";
+
 export const LoginButton = () => {
   const { user, isPending, isAnonymous, login } = useAuth();
 
   if (isPending) {
     return (
-      <div className="items-center box-border caret-transparent flex shrink-0 h-[42px] min-h-0 min-w-0 order-3 ml-4 mt-[84px] md:[align-items:normal] md:block md:h-auto md:min-h-[auto] md:min-w-[auto] md:order-none md:ml-0 md:mt-0">
-        <span className="relative text-sm items-center box-border caret-transparent gap-x-1.5 flex leading-[14px] gap-y-1.5 mt-0.5 px-0 rounded-bl rounded-br rounded-tl rounded-tr font-aeonik_mono md:px-2">
+      <div className={wrapperClass}>
+        <span className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik_mono md:px-2">
           Loading...
         </span>
       </div>
@@ -15,10 +17,10 @@ export const LoginButton = () => {
 
   if (isAnonymous) {
     return (
-      <div className="items-center box-border caret-transparent flex shrink-0 h-[42px] min-h-0 min-w-0 order-3 ml-4 mt-[84px] md:[align-items:normal] md:block md:h-auto md:min-h-[auto] md:min-w-[auto] md:order-none md:ml-0 md:mt-0">
+      <div className={wrapperClass}>
         <button
           onClick={login}
-          className="relative text-sm items-center box-border caret-transparent gap-x-1.5 flex leading-[14px] gap-y-1.5 mt-0.5 px-0 rounded-bl rounded-br rounded-tl rounded-tr font-aeonik_mono md:px-2 hover:text-violet-600 cursor-pointer"
+          className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik_mono md:px-2 hover:text-violet-600 cursor-pointer transition-colors"
         >
           Login
         </button>
@@ -27,8 +29,8 @@ export const LoginButton = () => {
   }
 
   return (
-    <div className="items-center box-border caret-transparent flex shrink-0 h-[42px] min-h-0 min-w-0 order-3 ml-4 mt-[84px] md:[align-items:normal] md:block md:h-auto md:min-h-[auto] md:min-w-[auto] md:order-none md:ml-0 md:mt-0">
-      <span className="relative text-sm items-center box-border caret-transparent gap-x-1.5 flex leading-[14px] gap-y-1.5 mt-0.5 px-0 rounded-bl rounded-br rounded-tl rounded-tr font-aeonik_mono md:px-2">
+    <div className={wrapperClass}>
+      <span className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik_mono md:px-2">
         {user?.user_metadata?.display_name || user?.user_metadata?.full_name || user?.email}
       </span>
     </div>

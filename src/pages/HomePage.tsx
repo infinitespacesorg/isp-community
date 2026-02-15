@@ -6,7 +6,7 @@ import { Footer } from "@/sections/Footer";
 import { useCompositionsManifest } from "@/pages/CompositionPage";
 
 const PromotedHero = ({ path, name }: { path: string; name: string }) => (
-  <section className="w-full" style={{ height: "calc(100vh - 92px)" }}>
+  <section className="w-full" style={{ height: "calc(100vh - 56px)" }}>
     <iframe
       src={path}
       title={name}

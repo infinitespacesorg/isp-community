@@ -9,7 +9,7 @@ export const MobileMenuOverlay = ({ isOpen, onClose }: MobileMenuOverlayProps) =
   return (
     <div
       onClick={onClose}
-      className="fixed bg-black/20 box-border caret-transparent h-dvh w-full z-[-1] left-0 top-[60px] md:hidden"
+      className="fixed bg-black/20 h-dvh w-full z-[-1] left-0 top-14 md:hidden"
     />
   );
 };

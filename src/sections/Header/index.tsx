@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Logo } from "@/sections/Header/components/Logo";
 import { MobileMenuButton } from "@/sections/Header/components/MobileMenuButton";
 import { DesktopNav } from "@/sections/Header/components/DesktopNav";
@@ -6,11 +6,24 @@ import { MobileMenuOverlay } from "@/sections/Header/components/MobileMenuOverla
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="relative items-center box-border caret-transparent flex justify-between w-full z-[1000] px-3 py-3.5 left-0 top-0 md:px-9 md:py-10">
+    <header
+      className={`sticky top-0 z-50 flex items-center justify-between w-full h-14 px-4 md:px-9 transition-all duration-300 ${
+        scrolled
+          ? "bg-transparent backdrop-blur-none border-transparent"
+          : "bg-white/95 backdrop-blur-sm border-b border-border/40"
+      }`}
+    >
       <Logo />
-      <nav className="items-center box-border caret-transparent gap-x-2 flex justify-end gap-y-2 uppercase w-full md:gap-x-[normal] md:justify-normal md:gap-y-[normal]">
+      <nav className="flex items-center gap-2 uppercase">
         <MobileMenuButton isOpen={mobileMenuOpen} onToggle={() => setMobileMenuOpen(!mobileMenuOpen)} />
         <DesktopNav isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
         <MobileMenuOverlay isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />

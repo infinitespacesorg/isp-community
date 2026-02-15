@@ -9,12 +9,16 @@ type DesktopNavProps = {
 
 export const DesktopNav = ({ isOpen, onClose }: DesktopNavProps) => {
   return (
-    <div className={`fixed content-start items-center bg-white box-border caret-transparent flex-wrap h-dvh justify-start min-h-0 min-w-0 w-full overflow-auto pb-3.5 px-3 left-0 top-[60px] md:static md:bg-transparent md:flex md:flex-nowrap md:h-auto md:justify-between md:min-h-[auto] md:min-w-[auto] md:overflow-visible md:pb-0 md:px-0 md:left-auto md:top-auto ${isOpen ? "flex" : "hidden"}`}>
+    <div
+      className={`fixed left-0 top-14 w-full h-dvh bg-white/95 backdrop-blur-sm flex flex-wrap content-start items-center overflow-auto px-4 pb-4 md:static md:bg-transparent md:backdrop-blur-none md:flex md:flex-nowrap md:h-auto md:justify-between md:overflow-visible md:p-0 ${
+        isOpen ? "flex" : "hidden"
+      }`}
+    >
       <div onClick={onClose}>
         <NavLinks />
       </div>
       <LoginButton />
-      <div className="box-border caret-transparent shrink-0 min-h-0 min-w-0 order-2 mt-[84px] md:min-h-[auto] md:min-w-[auto] md:order-none md:mt-0">
+      <div className="shrink-0 order-2 mt-20 md:order-none md:mt-0">
         <SignUpButton />
       </div>
     </div>
