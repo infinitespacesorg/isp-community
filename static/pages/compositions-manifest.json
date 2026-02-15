@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "website-3dgs",
+    "name": "Infinite Spaces",
+    "description": "Immersive 3DGS scroll experience",
+    "path": "/pages/website-3dgs/index.html",
+    "visible": true,
+    "promoted": true,
+    "publishedAt": "2026-02-14",
+    "thumbnail": "/pages/website-3dgs/assets/icon.svg"
+  }
+]
