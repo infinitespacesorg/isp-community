@@ -29,7 +29,7 @@ export const NewsletterForm = () => {
             <div className="items-end box-border caret-transparent gap-x-2 flex flex-wrap gap-y-2">
               <div className="box-border caret-transparent max-w-[calc(100%_-_114px)]">
                 <div className="relative box-border caret-transparent flex flex-wrap">
-                  <label className="text-neutral-500 text-xs box-border caret-transparent block leading-3 uppercase w-full ml-0 font-aeonik_mono md:ml-[17px]">
+                  <label className="text-neutral-500 text-xs box-border caret-transparent block leading-3 uppercase w-full ml-0 font-aeonik-mono md:ml-[17px]">
                     Newsletter
                   </label>
                   <input
@@ -39,7 +39,7 @@ export const NewsletterForm = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={isPending}
-                    className="text-neutral-950 text-sm items-center bg-transparent box-border caret-transparent gap-x-1.5 flex shrink-0 h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase w-full border border-stone-500 mt-3 px-[15px] py-0 rounded-lg border-solid font-aeonik_mono disabled:opacity-50"
+                    className="text-neutral-950 text-sm items-center bg-transparent box-border caret-transparent gap-x-1.5 flex shrink-0 h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase w-full border border-stone-500 mt-3 px-[15px] py-0 rounded-lg border-solid font-aeonik-mono disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -47,7 +47,7 @@ export const NewsletterForm = () => {
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="text-neutral-900 text-sm items-center bg-stone-300 caret-transparent gap-x-1.5 flex shrink-0 h-[42px] justify-center leading-[14px] gap-y-1.5 text-center uppercase border border-stone-300 px-[25px] py-0 rounded-lg border-solid font-aeonik_mono hover:text-white hover:bg-violet-600 hover:border-violet-600 disabled:opacity-50 cursor-pointer"
+                  className="text-neutral-900 text-sm items-center bg-stone-300 caret-transparent gap-x-1.5 flex shrink-0 h-[42px] justify-center leading-[14px] gap-y-1.5 text-center uppercase border border-stone-300 px-[25px] py-0 rounded-lg border-solid font-aeonik-mono hover:text-white hover:bg-violet-600 hover:border-violet-600 disabled:opacity-50 cursor-pointer"
                 >
                   <span className="box-border caret-transparent block">
                     {isPending ? "Submitting..." : "Submit"}
@@ -56,12 +56,12 @@ export const NewsletterForm = () => {
               </div>
             </div>
             {showSuccess && (
-              <div className="box-border caret-transparent mt-3 text-sm text-green-600 font-aeonik_mono">
+              <div className="box-border caret-transparent mt-3 text-sm text-green-600 font-aeonik-mono">
                 Thank you for subscribing!
               </div>
             )}
             {error && (
-              <div className="box-border caret-transparent mt-3 text-sm text-red-600 font-aeonik_mono">
+              <div className="box-border caret-transparent mt-3 text-sm text-red-600 font-aeonik-mono">
                 {error.message}
               </div>
             )}

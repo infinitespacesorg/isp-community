@@ -7,7 +7,7 @@ import { features } from "@/config/features";
 const accountsUrl = import.meta.env.VITE_ACCOUNTS_URL || "https://accounts.infinitespaces.io";
 
 const footerLinkStyle =
-  "relative text-stone-300 text-sm box-border caret-transparent block leading-[14px] uppercase mb-7 rounded-sm font-aeonik_mono md:mb-10 after:md:accent-auto after:md:bg-stone-300 after:md:box-border after:md:caret-transparent after:md:text-stone-300 after:md:block after:md:text-sm after:md:not-italic after:md:font-normal after:md:h-px after:md:tracking-[0.18px] after:md:leading-[14px] after:md:list-outside after:md:list-[''] after:md:pointer-events-none after:md:absolute after:md:text-start after:md:no-underline after:md:indent-[0px] after:md:uppercase after:md:origin-[100%_0%] after:md:visible after:md:w-full after:md:border-separate after:md:scale-x-0 after:md:left-0 after:md:-bottom-0.5 after:md:font-aeonik_mono";
+  "relative text-stone-300 text-sm box-border caret-transparent block leading-[14px] uppercase mb-7 rounded-sm font-aeonik-mono md:mb-10 after:md:accent-auto after:md:bg-stone-300 after:md:box-border after:md:caret-transparent after:md:text-stone-300 after:md:block after:md:text-sm after:md:not-italic after:md:font-normal after:md:h-px after:md:tracking-[0.18px] after:md:leading-[14px] after:md:list-outside after:md:list-[''] after:md:pointer-events-none after:md:absolute after:md:text-start after:md:no-underline after:md:indent-[0px] after:md:uppercase after:md:origin-[100%_0%] after:md:visible after:md:w-full after:md:border-separate after:md:scale-x-0 after:md:left-0 after:md:-bottom-0.5 after:md:font-aeonik-mono";
 
 const footerLinkStyleLast = footerLinkStyle.replace("mb-7", "").replace("md:mb-10", "");
 

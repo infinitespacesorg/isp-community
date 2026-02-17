@@ -10,7 +10,7 @@ type DesktopNavProps = {
 export const DesktopNav = ({ isOpen, onClose }: DesktopNavProps) => {
   return (
     <div
-      className={`fixed left-0 top-14 w-full h-dvh bg-white/95 backdrop-blur-sm flex flex-wrap content-start items-center overflow-auto px-4 pb-4 md:static md:bg-transparent md:backdrop-blur-none md:flex md:flex-nowrap md:h-auto md:justify-between md:overflow-visible md:p-0 ${
+      className={`fixed left-0 top-14 w-full h-dvh bg-white/95 backdrop-blur-xs flex flex-wrap content-start items-center overflow-auto px-4 pb-4 md:static md:bg-transparent md:backdrop-blur-none md:flex md:flex-nowrap md:h-auto md:justify-between md:overflow-visible md:p-0 ${
         isOpen ? "flex" : "hidden"
       }`}
     >

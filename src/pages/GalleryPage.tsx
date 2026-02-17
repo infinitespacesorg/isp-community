@@ -15,13 +15,13 @@ export const GalleryPage = () => {
 
             {isPending && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">Loading projects...</span>
+                <span className="text-sm font-aeonik-mono uppercase">Loading projects...</span>
               </div>
             )}
 
             {error && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase text-red-600">
+                <span className="text-sm font-aeonik-mono uppercase text-red-600">
                   Error loading projects
                 </span>
               </div>
@@ -29,7 +29,7 @@ export const GalleryPage = () => {
 
             {!isPending && !error && projects && projects.length === 0 && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">No projects yet</span>
+                <span className="text-sm font-aeonik-mono uppercase">No projects yet</span>
               </div>
             )}
 

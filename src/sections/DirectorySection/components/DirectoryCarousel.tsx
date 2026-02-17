@@ -8,7 +8,7 @@ export const DirectoryCarousel = () => {
     return (
       <div className="relative box-border caret-transparent overflow-x-hidden overflow-y-auto w-screen -ml-3 md:-ml-9">
         <div className="box-border caret-transparent px-3 py-8 text-center md:px-9">
-          <span className="text-sm font-aeonik_mono uppercase">Loading profiles...</span>
+          <span className="text-sm font-aeonik-mono uppercase">Loading profiles...</span>
         </div>
       </div>
     );
@@ -18,7 +18,7 @@ export const DirectoryCarousel = () => {
     return (
       <div className="relative box-border caret-transparent overflow-x-hidden overflow-y-auto w-screen -ml-3 md:-ml-9">
         <div className="box-border caret-transparent px-3 py-8 text-center md:px-9">
-          <span className="text-sm font-aeonik_mono uppercase text-red-600">
+          <span className="text-sm font-aeonik-mono uppercase text-red-600">
             Error loading profiles
           </span>
         </div>
@@ -30,7 +30,7 @@ export const DirectoryCarousel = () => {
     return (
       <div className="relative box-border caret-transparent overflow-x-hidden overflow-y-auto w-screen -ml-3 md:-ml-9">
         <div className="box-border caret-transparent px-3 py-8 text-center md:px-9">
-          <span className="text-sm font-aeonik_mono uppercase">No profiles yet</span>
+          <span className="text-sm font-aeonik-mono uppercase">No profiles yet</span>
         </div>
       </div>
     );

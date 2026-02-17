@@ -34,7 +34,7 @@ export const CompositionPage = () => {
   if (!loaded) {
     return (
       <div className="flex items-center justify-center" style={{ height: "calc(100vh - 92px)" }}>
-        <div className="animate-pulse text-neutral-400 text-sm font-aeonik_mono uppercase">
+        <div className="animate-pulse text-neutral-400 text-sm font-aeonik-mono uppercase">
           Loading...
         </div>
       </div>

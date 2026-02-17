@@ -18,13 +18,13 @@ export const PricingPage = () => {
 
             {isPending && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">Loading plans...</span>
+                <span className="text-sm font-aeonik-mono uppercase">Loading plans...</span>
               </div>
             )}
 
             {error && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase text-red-600">
+                <span className="text-sm font-aeonik-mono uppercase text-red-600">
                   Error loading plans
                 </span>
               </div>
@@ -32,7 +32,7 @@ export const PricingPage = () => {
 
             {!isPending && !error && plans && plans.length === 0 && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">No plans yet</span>
+                <span className="text-sm font-aeonik-mono uppercase">No plans yet</span>
               </div>
             )}
 
@@ -84,7 +84,7 @@ export const PricingPage = () => {
                       </ul>
                     )}
                     <button
-                      className={`text-sm items-center box-border caret-transparent gap-x-1.5 flex w-full h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik_mono cursor-pointer ${
+                      className={`text-sm items-center box-border caret-transparent gap-x-1.5 flex w-full h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik-mono cursor-pointer ${
                         plan.featured
                           ? "text-white bg-violet-600 hover:bg-neutral-950"
                           : "text-white bg-neutral-950 hover:bg-violet-600"

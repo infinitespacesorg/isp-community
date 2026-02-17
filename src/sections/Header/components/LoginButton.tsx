@@ -8,7 +8,7 @@ export const LoginButton = () => {
   if (isPending) {
     return (
       <div className={wrapperClass}>
-        <span className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik_mono md:px-2">
+        <span className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik-mono md:px-2">
           Loading...
         </span>
       </div>
@@ -20,7 +20,7 @@ export const LoginButton = () => {
       <div className={wrapperClass}>
         <button
           onClick={login}
-          className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik_mono md:px-2 hover:text-violet-600 cursor-pointer transition-colors"
+          className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik-mono md:px-2 hover:text-violet-600 cursor-pointer transition-colors"
         >
           Login
         </button>
@@ -30,7 +30,7 @@ export const LoginButton = () => {
 
   return (
     <div className={wrapperClass}>
-      <span className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik_mono md:px-2">
+      <span className="text-sm flex items-center gap-1.5 leading-[14px] mt-0.5 px-0 rounded font-aeonik-mono md:px-2">
         {user?.user_metadata?.display_name || user?.user_metadata?.full_name || user?.email}
       </span>
     </div>

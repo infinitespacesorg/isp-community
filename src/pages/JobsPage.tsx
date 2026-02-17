@@ -15,13 +15,13 @@ export const JobsPage = () => {
 
             {isPending && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">Loading jobs...</span>
+                <span className="text-sm font-aeonik-mono uppercase">Loading jobs...</span>
               </div>
             )}
 
             {error && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase text-red-600">
+                <span className="text-sm font-aeonik-mono uppercase text-red-600">
                   Error loading jobs
                 </span>
               </div>
@@ -29,7 +29,7 @@ export const JobsPage = () => {
 
             {!isPending && !error && jobs && jobs.length === 0 && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">No jobs yet</span>
+                <span className="text-sm font-aeonik-mono uppercase">No jobs yet</span>
               </div>
             )}
 
@@ -65,7 +65,7 @@ export const JobsPage = () => {
                         </div>
                       </div>
                       <div className="box-border caret-transparent flex items-start">
-                        <button className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik_mono hover:bg-violet-600 cursor-pointer">
+                        <button className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik-mono hover:bg-violet-600 cursor-pointer">
                           Apply
                         </button>
                       </div>

@@ -30,7 +30,7 @@ export const WaitlistPage = () => {
           </p>
 
           {submitted ? (
-            <div className="text-sm text-violet-600 font-aeonik_mono uppercase tracking-wider">
+            <div className="text-sm text-violet-600 font-aeonik-mono uppercase tracking-wider">
               You're on the list. We'll be in touch.
             </div>
           ) : (
@@ -42,12 +42,12 @@ export const WaitlistPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isPending}
-                className="text-neutral-950 text-sm bg-transparent box-border h-[42px] leading-[14px] w-full max-w-[320px] border border-neutral-300 px-4 rounded-lg font-aeonik_mono disabled:opacity-50"
+                className="text-neutral-950 text-sm bg-transparent box-border h-[42px] leading-[14px] w-full max-w-[320px] border border-neutral-300 px-4 rounded-lg font-aeonik-mono disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={isPending}
-                className="text-white text-sm bg-neutral-950 h-[42px] leading-[14px] px-6 rounded-lg font-aeonik_mono hover:bg-violet-600 disabled:opacity-50 cursor-pointer shrink-0"
+                className="text-white text-sm bg-neutral-950 h-[42px] leading-[14px] px-6 rounded-lg font-aeonik-mono hover:bg-violet-600 disabled:opacity-50 cursor-pointer shrink-0"
               >
                 {isPending ? "..." : "Join"}
               </button>

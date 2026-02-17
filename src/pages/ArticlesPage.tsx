@@ -15,13 +15,13 @@ export const ArticlesPage = () => {
 
             {isPending && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">Loading articles...</span>
+                <span className="text-sm font-aeonik-mono uppercase">Loading articles...</span>
               </div>
             )}
 
             {error && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase text-red-600">
+                <span className="text-sm font-aeonik-mono uppercase text-red-600">
                   Error loading articles
                 </span>
               </div>
@@ -29,7 +29,7 @@ export const ArticlesPage = () => {
 
             {!isPending && !error && articles && articles.length === 0 && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">No articles yet</span>
+                <span className="text-sm font-aeonik-mono uppercase">No articles yet</span>
               </div>
             )}
 

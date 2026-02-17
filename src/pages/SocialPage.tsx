@@ -37,7 +37,7 @@ export const SocialPage = () => {
                 </p>
                 <button
                   onClick={login}
-                  className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 inline-flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik_mono hover:bg-violet-600 cursor-pointer"
+                  className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 inline-flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik-mono hover:bg-violet-600 cursor-pointer"
                 >
                   Sign In
                 </button>
@@ -52,13 +52,13 @@ export const SocialPage = () => {
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="What's on your mind?"
                     disabled={isCreating}
-                    className="text-neutral-950 text-lg box-border caret-transparent w-full min-h-[120px] p-4 border border-stone-300 rounded-lg resize-none font-aeonik focus:outline-none focus:border-violet-600"
+                    className="text-neutral-950 text-lg box-border caret-transparent w-full min-h-[120px] p-4 border border-stone-300 rounded-lg resize-none font-aeonik focus:outline-hidden focus:border-violet-600"
                   />
                   <div className="box-border caret-transparent flex justify-end mt-4">
                     <button
                       type="submit"
                       disabled={isCreating || !content.trim()}
-                      className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik_mono hover:bg-violet-600 disabled:opacity-50 cursor-pointer"
+                      className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik-mono hover:bg-violet-600 disabled:opacity-50 cursor-pointer"
                     >
                       {isCreating ? "Posting..." : "Post"}
                     </button>
@@ -69,13 +69,13 @@ export const SocialPage = () => {
 
             {isPending && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">Loading posts...</span>
+                <span className="text-sm font-aeonik-mono uppercase">Loading posts...</span>
               </div>
             )}
 
             {error && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase text-red-600">
+                <span className="text-sm font-aeonik-mono uppercase text-red-600">
                   Error loading posts
                 </span>
               </div>
@@ -83,7 +83,7 @@ export const SocialPage = () => {
 
             {!isPending && !error && posts && posts.length === 0 && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">No posts yet</span>
+                <span className="text-sm font-aeonik-mono uppercase">No posts yet</span>
               </div>
             )}
 
@@ -99,7 +99,7 @@ export const SocialPage = () => {
                         <p className="text-lg box-border caret-transparent leading-[27px] whitespace-pre-wrap">
                           {post.content}
                         </p>
-                        <div className="text-neutral-500 text-xs box-border caret-transparent mt-4 uppercase font-aeonik_mono">
+                        <div className="text-neutral-500 text-xs box-border caret-transparent mt-4 uppercase font-aeonik-mono">
                           {new Date(post.createdAt).toLocaleDateString("en-US", {
                             month: "short",
                             day: "2-digit",

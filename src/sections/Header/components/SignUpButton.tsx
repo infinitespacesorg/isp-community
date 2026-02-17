@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { features } from "@/config/features";
 
 const btnClass =
-  "text-white text-sm flex items-center gap-1.5 bg-neutral-950 shrink-0 h-[42px] justify-center leading-[14px] overflow-hidden ml-0 pl-5 pr-4 rounded-lg font-aeonik_mono md:ml-2 hover:bg-violet-600 transition-colors cursor-pointer";
+  "text-white text-sm flex items-center gap-1.5 bg-neutral-950 shrink-0 h-[42px] justify-center leading-[14px] overflow-hidden ml-0 pl-5 pr-4 rounded-lg font-aeonik-mono md:ml-2 hover:bg-violet-600 transition-colors cursor-pointer";
 
 export const SignUpButton = () => {
   const { isAnonymous, signup, logout } = useAuth();

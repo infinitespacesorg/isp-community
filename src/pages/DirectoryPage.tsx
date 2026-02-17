@@ -16,13 +16,13 @@ export const DirectoryPage = () => {
 
             {isPending && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">Loading profiles...</span>
+                <span className="text-sm font-aeonik-mono uppercase">Loading profiles...</span>
               </div>
             )}
 
             {error && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase text-red-600">
+                <span className="text-sm font-aeonik-mono uppercase text-red-600">
                   Error loading profiles
                 </span>
               </div>
@@ -30,7 +30,7 @@ export const DirectoryPage = () => {
 
             {!isPending && !error && profiles && profiles.length === 0 && (
               <div className="box-border caret-transparent text-center py-20">
-                <span className="text-sm font-aeonik_mono uppercase">No profiles yet</span>
+                <span className="text-sm font-aeonik-mono uppercase">No profiles yet</span>
               </div>
             )}
 

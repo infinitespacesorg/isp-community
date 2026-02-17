@@ -16,7 +16,7 @@ export const SectionHeader = (props: SectionHeaderProps) => {
       <div className="items-end box-border caret-transparent flex grow flex-wrap justify-end md:[align-items:normal] md:grow-0">
         <Link
           to={props.linkHref}
-          className="text-sm items-center box-border caret-transparent flex leading-[14px] uppercase rounded-bl rounded-br rounded-tl rounded-tr font-aeonik_mono"
+          className="text-sm items-center box-border caret-transparent flex leading-[14px] uppercase rounded-bl rounded-br rounded-tl rounded-tr font-aeonik-mono"
         >
           <span className="box-border caret-transparent block">
             {props.linkText}

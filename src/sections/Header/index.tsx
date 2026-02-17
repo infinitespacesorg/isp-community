@@ -19,7 +19,7 @@ export const Header = () => {
       className={`sticky top-0 z-50 flex items-center justify-between w-full h-14 px-4 md:px-9 transition-all duration-300 ${
         scrolled
           ? "bg-transparent backdrop-blur-none border-transparent"
-          : "bg-white/95 backdrop-blur-sm border-b border-border/40"
+          : "bg-white/95 backdrop-blur-xs border-b border-border/40"
       }`}
     >
       <Logo />

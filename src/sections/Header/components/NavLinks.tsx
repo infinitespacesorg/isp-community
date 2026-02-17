@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { features } from "@/config/features";
 
 const linkBase =
-  "relative text-[32px] font-black inline-block tracking-[-0.36px] leading-[31.36px] normal-case px-0 rounded font-aeonik transition-colors md:text-sm md:font-normal md:tracking-[0.18px] md:leading-[14px] md:uppercase md:px-2 md:font-aeonik_mono";
+  "relative text-[32px] font-black inline-block tracking-[-0.36px] leading-[31.36px] normal-case px-0 rounded font-aeonik transition-colors md:text-sm md:font-normal md:tracking-[0.18px] md:leading-[14px] md:uppercase md:px-2 md:font-aeonik-mono";
 
 const navItems = [
   { to: "/social", label: "Social", visible: features.showSocial },

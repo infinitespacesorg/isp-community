@@ -61,7 +61,7 @@ export const AuthCallbackPage = () => {
           </p>
           <button
             onClick={() => navigate("/")}
-            className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 inline-flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik_mono hover:bg-violet-600 cursor-pointer"
+            className="text-white text-sm items-center bg-neutral-950 box-border caret-transparent gap-x-1.5 inline-flex h-[42px] justify-center leading-[14px] gap-y-1.5 uppercase px-6 rounded-lg font-aeonik-mono hover:bg-violet-600 cursor-pointer"
           >
             Go Home
           </button>
@@ -72,7 +72,7 @@ export const AuthCallbackPage = () => {
 
   return (
     <div className="box-border caret-transparent flex flex-col items-center justify-center min-h-screen">
-      <span className="text-sm font-aeonik_mono uppercase">Signing you in...</span>
+      <span className="text-sm font-aeonik-mono uppercase">Signing you in...</span>
     </div>
   );
 };

@@ -7,7 +7,7 @@ export const GalleryInfo = () => {
         <div className="absolute items-center box-border caret-transparent gap-x-[normal] block grid-cols-none w-full mx-0 left-0 top-0 md:gap-x-6 md:grid md:grid-cols-[repeat(10,1fr)] md:mx-auto">
           <div className="items-center box-border caret-transparent flex col-end-auto col-start-auto min-h-0 min-w-0 md:col-end-[span_3] md:col-start-1 md:min-h-[auto] md:min-w-[auto]">
             <ul className="relative items-start box-border caret-transparent flex flex-wrap list-[''] w-full pl-0">
-              <li className="relative text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 uppercase w-9 z-[2] rounded-[50%] border-2 border-solid border-white font-aeonik_mono after:accent-auto after:bg-neutral-950 after:box-border after:caret-transparent after:text-white after:block after:text-sm after:not-italic after:font-normal after:h-[calc(100%_-_2px)] after:tracking-[0.18px] after:leading-[14px] after:list-outside after:list-[''] after:pointer-events-auto after:absolute after:text-start after:indent-[0px] after:uppercase after:visible after:w-[calc(100%_-_2px)] after:z-0 after:rounded-[50%] after:border-separate after:left-px after:top-px after:font-aeonik_mono">
+              <li className="relative text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 uppercase w-9 z-[2] rounded-[50%] border-2 border-solid border-white font-aeonik-mono after:accent-auto after:bg-neutral-950 after:box-border after:caret-transparent after:text-white after:block after:text-sm after:not-italic after:font-normal after:h-[calc(100%_-_2px)] after:tracking-[0.18px] after:leading-[14px] after:list-outside after:list-[''] after:pointer-events-auto after:absolute after:text-start after:indent-[0px] after:uppercase after:visible after:w-[calc(100%_-_2px)] after:z-0 after:rounded-[50%] after:border-separate after:left-px after:top-px after:font-aeonik-mono">
                 <a
                   href="#"
                   title="User 1"
@@ -23,7 +23,7 @@ export const GalleryInfo = () => {
                   </div>
                 </a>
               </li>
-              <li className="relative text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 uppercase w-9 z-[1] -ml-2 rounded-[50%] border-2 border-solid border-white font-aeonik_mono after:accent-auto after:bg-neutral-950 after:box-border after:caret-transparent after:text-white after:block after:text-sm after:not-italic after:font-normal after:h-[calc(100%_-_2px)] after:tracking-[0.18px] after:leading-[14px] after:list-outside after:list-[''] after:pointer-events-auto after:absolute after:text-start after:indent-[0px] after:uppercase after:visible after:w-[calc(100%_-_2px)] after:z-0 after:rounded-[50%] after:border-separate after:left-px after:top-px after:font-aeonik_mono">
+              <li className="relative text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 uppercase w-9 z-[1] -ml-2 rounded-[50%] border-2 border-solid border-white font-aeonik-mono after:accent-auto after:bg-neutral-950 after:box-border after:caret-transparent after:text-white after:block after:text-sm after:not-italic after:font-normal after:h-[calc(100%_-_2px)] after:tracking-[0.18px] after:leading-[14px] after:list-outside after:list-[''] after:pointer-events-auto after:absolute after:text-start after:indent-[0px] after:uppercase after:visible after:w-[calc(100%_-_2px)] after:z-0 after:rounded-[50%] after:border-separate after:left-px after:top-px after:font-aeonik-mono">
                 <a
                   href="#"
                   title="User 2"
@@ -62,13 +62,13 @@ export const GalleryInfo = () => {
         <div className="box-border caret-transparent flex justify-end">
           <button
             aria-label="Previous project"
-            className="relative text-sm items-center bg-transparent caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 text-center uppercase w-9 border border-neutral-950 mr-3 p-0 rounded-[50%] border-solid font-aeonik_mono hover:bg-violet-600 hover:border-violet-600"
+            className="relative text-sm items-center bg-transparent caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 text-center uppercase w-9 border border-neutral-950 mr-3 p-0 rounded-[50%] border-solid font-aeonik-mono hover:bg-violet-600 hover:border-violet-600"
           >
             <ChevronLeft className="h-5 w-5 z-[2]" />
           </button>
           <button
             aria-label="Next project"
-            className="relative text-sm items-center bg-transparent caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 text-center uppercase w-9 border border-neutral-950 p-0 rounded-[50%] border-solid font-aeonik_mono hover:bg-violet-600 hover:border-violet-600"
+            className="relative text-sm items-center bg-transparent caret-transparent gap-x-1.5 flex shrink-0 h-9 justify-center leading-[14px] gap-y-1.5 text-center uppercase w-9 border border-neutral-950 p-0 rounded-[50%] border-solid font-aeonik-mono hover:bg-violet-600 hover:border-violet-600"
           >
             <ChevronRight className="h-5 w-5 z-[2]" />
           </button>
