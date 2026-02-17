@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Scan linked @infinitespaces/ui source for utility classes */
+@source "./node_modules/@infinitespaces/ui/src";
+
 /* Class-based dark mode */
 @custom-variant dark (&:is(.dark *));
 

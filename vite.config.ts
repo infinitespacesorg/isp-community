@@ -12,8 +12,14 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+    // Force single instances of React for linked @infinitespaces/ui package
+    dedupe: ["react", "react-dom"],
   },
   server: {
     port: 5174,
+    fs: {
+      // Allow serving files from the linked UI package in the monorepo
+      allow: ["..", path.resolve(__dirname, "../isp-account-management")],
+    },
   },
 });
