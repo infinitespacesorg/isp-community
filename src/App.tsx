@@ -9,13 +9,16 @@ import { JobsPage } from "@/pages/JobsPage";
 import { PricingPage } from "@/pages/PricingPage";
 import { AuthCallbackPage } from "@/pages/AuthCallbackPage";
 import { CompositionPage } from "@/pages/CompositionPage";
+import { ExplorePage } from "@/pages/ExplorePage";
 import { WaitlistPage } from "@/pages/WaitlistPage";
 import { features } from "@/config/features";
 
 const MainLayout = () => (
   <>
     <Header />
-    <Outlet />
+    <main>
+      <Outlet />
+    </main>
   </>
 );
 
@@ -29,6 +32,7 @@ export const App = () => {
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/explore" element={<ExplorePage />} />
           <Route
             path="/social"
             element={

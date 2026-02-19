@@ -1,4 +1,5 @@
-import { GlobalNavbar, type NavItem } from "@infinitespaces/ui";
+import { GlassNavbar, type NavItem } from "@infinitespaces/ui";
+import logoSrc from "@/assets/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { features } from "@/config/features";
@@ -12,6 +13,7 @@ const RouterLink = ({
 }) => <Link to={href}>{children}</Link>;
 
 const navItems: NavItem[] = [
+  { label: "Explore", href: "/explore" },
   { label: "Social", href: "/social", visible: features.showSocial },
   { label: "Gallery", href: "/gallery", visible: features.showGallery },
   { label: "Directory", href: "/directory", visible: features.showDirectory },
@@ -34,12 +36,13 @@ export const Header = () => {
   };
 
   return (
-    <GlobalNavbar
+    <GlassNavbar
       logo={
-        <Link to="/" aria-label="Home" className="flex items-center">
-          <div className="h-9 w-9 bg-neutral-950 rounded-lg flex items-center justify-center text-white text-sm font-bold">
-            IS
-          </div>
+        <Link to="/" aria-label="Home" className="flex items-center gap-2.5">
+          <img src={logoSrc} alt="Infinite Spaces" className="h-8 w-8" />
+          <span className="text-sm font-semibold tracking-tight text-white">
+            Infinite Spaces
+          </span>
         </Link>
       }
       navItems={navItems}
