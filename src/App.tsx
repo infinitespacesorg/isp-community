@@ -10,6 +10,7 @@ import { PricingPage } from "@/pages/PricingPage";
 import { AuthCallbackPage } from "@/pages/AuthCallbackPage";
 import { CompositionPage } from "@/pages/CompositionPage";
 import { ExplorePage } from "@/pages/ExplorePage";
+import { LabPage } from "@/pages/LabPage";
 import { WaitlistPage } from "@/pages/WaitlistPage";
 import { features } from "@/config/features";
 
@@ -33,6 +34,7 @@ export const App = () => {
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/lab" element={<LabPage />} />
           <Route
             path="/social"
             element={
@@ -57,8 +59,22 @@ export const App = () => {
               </GatedRoute>
             }
           />
-          <Route path="/articles" element={<ArticlesPage />} />
-          <Route path="/jobs" element={<JobsPage />} />
+          <Route
+            path="/articles"
+            element={
+              <GatedRoute enabled={features.showArticles}>
+                <ArticlesPage />
+              </GatedRoute>
+            }
+          />
+          <Route
+            path="/jobs"
+            element={
+              <GatedRoute enabled={features.showJobs}>
+                <JobsPage />
+              </GatedRoute>
+            }
+          />
           <Route
             path="/pricing"
             element={

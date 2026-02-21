@@ -17,11 +17,13 @@ function getAuthUrl(path: string) {
 }
 
 const allNavLinks = [
+  { href: "/explore", text: "Explore", visible: true },
+  { href: "/lab", text: "Lab", visible: true },
   { href: "/social", text: "Social", visible: features.showSocial },
   { href: "/gallery", text: "Gallery", visible: features.showGallery },
   { href: "/directory", text: "Directory", visible: features.showDirectory },
-  { href: "/articles", text: "Articles", visible: true },
-  { href: "/jobs", text: "Jobs", visible: true },
+  { href: "/articles", text: "Articles", visible: features.showArticles },
+  { href: "/jobs", text: "Jobs", visible: features.showJobs },
   { href: "/pricing", text: "Pricing", visible: features.showPricing },
 ];
 

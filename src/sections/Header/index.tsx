@@ -14,11 +14,12 @@ const RouterLink = ({
 
 const navItems: NavItem[] = [
   { label: "Explore", href: "/explore" },
+  { label: "Lab", href: "/lab" },
   { label: "Social", href: "/social", visible: features.showSocial },
   { label: "Gallery", href: "/gallery", visible: features.showGallery },
   { label: "Directory", href: "/directory", visible: features.showDirectory },
-  { label: "Articles", href: "/articles" },
-  { label: "Jobs", href: "/jobs" },
+  { label: "Articles", href: "/articles", visible: features.showArticles },
+  { label: "Jobs", href: "/jobs", visible: features.showJobs },
   { label: "Pricing", href: "/pricing", visible: features.showPricing },
 ];
 

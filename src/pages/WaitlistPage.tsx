@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { GlassPage, GlassHero, GlassFooter } from "@infinitespaces/ui";
 import { Footer } from "@/sections/Footer";
 
 export const WaitlistPage = () => {
@@ -18,44 +19,40 @@ export const WaitlistPage = () => {
   };
 
   return (
-    <div className="box-border caret-transparent flex flex-col min-h-[936px] md:min-h-[884px]">
-      <main className="box-border caret-transparent basis-[0%] grow flex items-center justify-center px-3 md:px-9">
-        <div className="max-w-lg w-full text-center">
-          <h1 className="text-4xl font-black tracking-tight mb-4 font-aeonik md:text-5xl">
-            Join the Waitlist
-          </h1>
-          <p className="text-neutral-600 text-base mb-8 leading-relaxed">
-            Thanks for your interest in Infinite Spaces. We're building something new — leave your
-            email and we'll let you know when it's ready.
-          </p>
+    <GlassPage>
+      <GlassHero
+        title="Join the Waitlist"
+        subtitle="Thanks for your interest in Infinite Spaces. We're building something new — leave your email and we'll let you know when it's ready."
+        minHeight="80vh"
+      >
+        {submitted ? (
+          <div className="text-sm text-blue-400 font-mono uppercase tracking-wider">
+            You're on the list. We'll be in touch.
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex gap-2 justify-center w-full max-w-md">
+            <input
+              type="email"
+              required
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isPending}
+              className="text-white text-sm bg-white/[0.03] box-border h-[42px] leading-[14px] w-full border border-white/[0.06] px-4 rounded-lg font-mono placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 disabled:opacity-50"
+            />
+            <button
+              type="submit"
+              disabled={isPending}
+              className="text-white text-sm bg-blue-500/80 h-[42px] leading-[14px] px-6 rounded-lg font-mono hover:bg-blue-500 disabled:opacity-50 cursor-pointer shrink-0 transition-colors"
+            >
+              {isPending ? "..." : "Join"}
+            </button>
+          </form>
+        )}
+      </GlassHero>
 
-          {submitted ? (
-            <div className="text-sm text-violet-600 font-aeonik-mono uppercase tracking-wider">
-              You're on the list. We'll be in touch.
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex gap-2 justify-center">
-              <input
-                type="email"
-                required
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isPending}
-                className="text-neutral-950 text-sm bg-transparent box-border h-[42px] leading-[14px] w-full max-w-[320px] border border-neutral-300 px-4 rounded-lg font-aeonik-mono disabled:opacity-50"
-              />
-              <button
-                type="submit"
-                disabled={isPending}
-                className="text-white text-sm bg-neutral-950 h-[42px] leading-[14px] px-6 rounded-lg font-aeonik-mono hover:bg-violet-600 disabled:opacity-50 cursor-pointer shrink-0"
-              >
-                {isPending ? "..." : "Join"}
-              </button>
-            </form>
-          )}
-        </div>
-      </main>
+      <GlassFooter text="Infinite Spaces — Early access coming soon." />
       <Footer />
-    </div>
+    </GlassPage>
   );
 };
