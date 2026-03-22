@@ -1,5 +1,5 @@
 import { GlassNavbar, type NavItem } from "@infinitespaces/ui";
-import logoSrc from "@/assets/logo.png";
+import logoSrc from "@/assets/logo.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { features } from "@/config/features";
@@ -71,6 +71,8 @@ export const Header = () => {
       }}
       linkComponent={RouterLink}
       activePath={location.pathname}
+      transparentAtTop={false}
+      className="!relative !top-auto !left-auto !translate-x-0 !w-full !max-w-none !z-auto community-navbar"
     />
   );
 };

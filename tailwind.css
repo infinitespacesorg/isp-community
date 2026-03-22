@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import "tailwindcss";
 
 /* Scan linked @infinitespaces/ui source for utility classes */
 @source "./node_modules/@infinitespaces/ui/src";
@@ -148,6 +148,22 @@
   --sidebar-accent-foreground: 240 4.8% 95.9%;
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+/* Community navbar overrides — static (scrolls with page), no rounded pill */
+.community-navbar header {
+  border-radius: 0;
+}
+
+/* Login button — ghost variant has no visible bg; add subtle glass treatment */
+.community-navbar .hover\:bg-accent {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.375rem;
+}
+
+.community-navbar .hover\:bg-accent:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Base layer overrides */

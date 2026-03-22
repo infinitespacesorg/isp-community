@@ -4,7 +4,7 @@ import type { User } from "@supabase/supabase-js";
 import type { ReactNode } from "react";
 import { createElement } from "react";
 
-const accountsUrl = import.meta.env.VITE_ACCOUNTS_URL || "https://accounts.infinitespaces.io";
+const accountsUrl = import.meta.env.VITE_ACCOUNTS_URL || "https://accounts.infinitespaces.ai";
 
 type AuthState = {
   user: User | null;
