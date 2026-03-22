@@ -26,37 +26,12 @@ export const FooterLinks = () => {
             Acceptable Use
           </a>
         </li>
-        <li className="box-border caret-transparent flex border-zinc-500 pr-2 border-r">
+        <li className="box-border caret-transparent flex">
           <a
             href="/disclaimer"
             className="relative box-border caret-transparent block rounded-sm after:md:accent-auto after:md:bg-zinc-500 after:md:box-border after:md:caret-transparent after:md:text-zinc-500 after:md:block after:md:text-xs after:md:not-italic after:md:font-normal after:md:h-px after:md:tracking-[0.18px] after:md:leading-3 after:md:list-outside after:md:list-[''] after:md:pointer-events-none after:md:absolute after:md:text-start after:md:no-underline after:md:indent-[0px] after:md:uppercase after:md:origin-[100%_0%] after:md:visible after:md:w-full after:md:border-separate after:md:scale-x-0 after:md:left-0 after:md:-bottom-0.5 after:md:font-aeonik-mono"
           >
             Disclaimer
-          </a>
-        </li>
-        <li className="box-border caret-transparent flex border-zinc-500 pr-2 border-r">
-          <a
-            href="/return-policy"
-            className="relative box-border caret-transparent block rounded-sm after:md:accent-auto after:md:bg-zinc-500 after:md:box-border after:md:caret-transparent after:md:text-zinc-500 after:md:block after:md:text-xs after:md:not-italic after:md:font-normal after:md:h-px after:md:tracking-[0.18px] after:md:leading-3 after:md:list-outside after:md:list-[''] after:md:pointer-events-none after:md:absolute after:md:text-start after:md:no-underline after:md:indent-[0px] after:md:uppercase after:md:origin-[100%_0%] after:md:visible after:md:w-full after:md:border-separate after:md:scale-x-0 after:md:left-0 after:md:-bottom-0.5 after:md:font-aeonik-mono"
-          >
-            Returns
-          </a>
-        </li>
-        <li className="box-border caret-transparent flex border-zinc-500 pr-2 border-r">
-          <a
-            href="/cookie-policy"
-            className="relative box-border caret-transparent block rounded-sm after:md:accent-auto after:md:bg-zinc-500 after:md:box-border after:md:caret-transparent after:md:text-zinc-500 after:md:block after:md:text-xs after:md:not-italic after:md:font-normal after:md:h-px after:md:tracking-[0.18px] after:md:leading-3 after:md:list-outside after:md:list-[''] after:md:pointer-events-none after:md:absolute after:md:text-start after:md:no-underline after:md:indent-[0px] after:md:uppercase after:md:origin-[100%_0%] after:md:visible after:md:w-full after:md:border-separate after:md:scale-x-0 after:md:left-0 after:md:-bottom-0.5 after:md:font-aeonik-mono"
-          >
-            Cookie Policy
-          </a>
-        </li>
-        <li className="box-border caret-transparent flex">
-          <a
-            href="#"
-            aria-label="Open cookie consent preferences"
-            className="relative box-border caret-transparent block rounded-sm after:md:accent-auto after:md:bg-zinc-500 after:md:box-border after:md:caret-transparent after:md:text-zinc-500 after:md:block after:md:text-xs after:md:not-italic after:md:font-normal after:md:h-px after:md:tracking-[0.18px] after:md:leading-3 after:md:list-outside after:md:list-[''] after:md:pointer-events-none after:md:absolute after:md:text-start after:md:no-underline after:md:indent-[0px] after:md:uppercase after:md:origin-[100%_0%] after:md:visible after:md:w-full after:md:border-separate after:md:scale-x-0 after:md:left-0 after:md:-bottom-0.5 after:md:font-aeonik-mono"
-          >
-            Cookie Preferences
           </a>
         </li>
       </ul>
