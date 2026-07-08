@@ -7,12 +7,17 @@ import {
   socialPosts as mockSocialPosts,
   galleryProjects as mockGalleryProjects,
   userProfiles as mockUserProfiles,
+  communityProfiles as mockCommunityProfiles,
+  stories as mockStories,
   articles as mockArticles,
   jobs as mockJobs,
   pricingPlans as mockPricingPlans,
   type SocialPost,
   type GalleryProject,
   type UserProfile,
+  type CommunityProfile,
+  type CommunityProfileType,
+  type Story,
   type Article,
   type Job,
   type PricingPlan,
@@ -124,6 +129,42 @@ export function useUserProfiles(options?: { limit?: number }): QueryResult<UserP
       createdAt: String(row.created_at ?? ""),
     }),
     { limit: options?.limit, orderBy: "created_at" },
+  );
+}
+
+export function useCommunityProfiles(): QueryResult<CommunityProfile> {
+  return useSupabaseQuery(
+    "community_profiles",
+    mockCommunityProfiles,
+    (row) => ({
+      id: String(row.id),
+      type: (String(row.type ?? "user") as CommunityProfileType),
+      handle: String(row.handle ?? ""),
+      displayName: String(row.display_name ?? ""),
+      avatarUrl: row.avatar_url ? String(row.avatar_url) : undefined,
+      bio: row.bio ? String(row.bio) : undefined,
+      location: row.location ? String(row.location) : undefined,
+    }),
+    { orderBy: "created_at" },
+  );
+}
+
+export function useStories(): QueryResult<Story> {
+  return useSupabaseQuery(
+    "stories",
+    mockStories,
+    (row) => ({
+      id: String(row.id),
+      profileHandle: String(row.profile_handle ?? ""),
+      slug: String(row.slug ?? ""),
+      title: String(row.title ?? ""),
+      description: row.description ? String(row.description) : undefined,
+      thumbnailUrl: row.thumbnail_url ? String(row.thumbnail_url) : undefined,
+      status: (row.status === "published" ? "published" : "draft"),
+      publishedAt: row.published_at ? String(row.published_at) : undefined,
+      path: row.slug ? `/stories/${String(row.slug)}` : "",
+    }),
+    { orderBy: "published_at" },
   );
 }
 

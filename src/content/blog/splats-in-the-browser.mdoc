@@ -1,0 +1,36 @@
+---
+title: Splats, in the browser, right now
+publishedDate: 2026-07-06
+author: The Infinite Spaces team
+summary: 3D Gaussian Splatting turns a handful of photos into a place you can move through. Here's why it's the quiet backbone of browser-native immersive worlds.
+tags:
+  - splats
+  - spatial
+  - webgpu
+---
+
+Ask someone to picture "3D on the web" and they'll usually imagine a chunky polygon model spinning on a white background. Useful, sometimes. Immersive, rarely.
+
+3D Gaussian Splatting (3DGS) is a different kind of thing. Instead of building a surface out of triangles, it represents a scene as millions of tiny, soft, colored points — splats — each holding position, color, and how it catches the light. Render enough of them and you don't get a model of a place. You get the place.
+
+## Why it matters for living worlds
+
+The point of a living, immersive world is that you forget the rendering entirely. You're not admiring geometry; you're somewhere. Splats get you there faster than almost anything else because:
+
+- **Capture is cheap.** A phone video or a set of photos is enough to reconstruct a real space.
+- **It runs in the browser.** WebGPU makes real-time splat rendering viable on commodity hardware — no install, no plugin.
+- **It reads as real.** Soft edges, real light, real depth. It sidesteps the uncanny flatness of low-poly scenes.
+
+## Not a demo — a surface
+
+The trick isn't rendering a splat scene once. It's making it a surface you can build on: put people in it, wire it to live inputs, let it react and remember. A captured room is the starting canvas, not the finished piece.
+
+Here's the same world from our welcome post, embedded again — because the best argument for "you're in it" is being in it:
+
+{% story slug="website-3dgs" /%}
+
+Move around. Notice that you stopped thinking about splats about two seconds in. That's the point.
+
+## Where this goes
+
+Capture keeps getting easier and rendering keeps getting cheaper, which means the cost of standing up a new world keeps falling. The interesting work now is everything on top: presence, participation, and handing the world to the people inside it. More on that soon.

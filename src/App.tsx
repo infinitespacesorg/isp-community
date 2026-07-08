@@ -1,4 +1,5 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { Header } from "@/sections/Header";
 import { HomePage } from "@/pages/HomePage";
 import { SocialPage } from "@/pages/SocialPage";
@@ -9,10 +10,26 @@ import { JobsPage } from "@/pages/JobsPage";
 import { PricingPage } from "@/pages/PricingPage";
 import { AuthCallbackPage } from "@/pages/AuthCallbackPage";
 import { CompositionPage } from "@/pages/CompositionPage";
-import { ExplorePage } from "@/pages/ExplorePage";
+import { PlayboxPage } from "@/pages/PlayboxPage";
 import { LabPage } from "@/pages/LabPage";
+import { CommunityPage } from "@/pages/CommunityPage";
+import { ProfilePage } from "@/pages/ProfilePage";
+import { AdminPage } from "@/pages/AdminPage";
+import { PlayboxFeaturesPage } from "@/pages/PlayboxFeaturesPage";
+import { PlayboxShowcasePage } from "@/pages/PlayboxShowcasePage";
+import { PlayboxPricingPage } from "@/pages/PlayboxPricingPage";
+import { BlogPage } from "@/pages/BlogPage";
+import { BlogPostPage } from "@/pages/BlogPostPage";
+import { AboutPage } from "@/pages/AboutPage";
+import { ContactPage } from "@/pages/ContactPage";
 import { WaitlistPage } from "@/pages/WaitlistPage";
 import { features } from "@/config/features";
+
+// bolt-keystatic admin UI — lazy so @keystatic/core (config, fields, editor)
+// stays out of the main SPA bundle and only loads on /keystatic.
+const KeystaticPage = lazy(() =>
+  import("@/pages/KeystaticPage").then((m) => ({ default: m.KeystaticPage })),
+);
 
 const MainLayout = () => (
   <>
@@ -31,9 +48,29 @@ export const App = () => {
     <div className="text-neutral-950 text-lg not-italic font-normal accent-auto bg-white box-border caret-transparent block tracking-[0.18px] leading-[27px] list-outside list-disc min-h-[1000px] overflow-x-clip pointer-events-auto text-start indent-[0px] normal-case visible w-full border-separate font-aeonik">
       <Routes>
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
+        {/* bolt-keystatic admin UI — full-screen, outside the site chrome.
+            Manages its own routing under the /keystatic base path. */}
+        <Route
+          path="/keystatic/*"
+          element={
+            <Suspense fallback={null}>
+              <KeystaticPage />
+            </Suspense>
+          }
+        />
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/p/:handle" element={<ProfilePage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/playbox" element={<PlayboxPage />} />
+          <Route path="/playbox/features" element={<PlayboxFeaturesPage />} />
+          <Route path="/playbox/showcase" element={<PlayboxShowcasePage />} />
+          <Route path="/playbox/pricing" element={<PlayboxPricingPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/lab" element={<LabPage />} />
           <Route
             path="/social"

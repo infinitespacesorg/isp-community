@@ -8,7 +8,7 @@ export const GalleryPage = () => {
     <div className="box-border caret-transparent flex flex-col min-h-screen">
       <main className="box-border caret-transparent basis-[0%] grow">
         <section className="box-border caret-transparent mb-[84px] mx-3 md:mb-40 md:mx-9">
-          <div className="box-border caret-transparent mt-14 md:mt-20">
+          <div className="box-border caret-transparent pt-28 md:pt-32">
             <h1 className="text-4xl font-black box-border caret-transparent tracking-[-0.36px] leading-[35.28px] mb-10 md:text-[44.8px] md:tracking-[-0.48px] md:leading-[43.904px]">
               Gallery
             </h1>

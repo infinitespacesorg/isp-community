@@ -1,20 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { Button, cn, Sheet, SheetContent, SheetTrigger, SheetTitle, Separator } from "@infinitespaces/ui";
 import { Menu } from "lucide-react";
-import logoSrc from "@/assets/logo.svg";
+import logoSrc from "@/assets/logo-light.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useStudioRole } from "@/hooks/useStudioRole";
 import { features } from "@/config/features";
 
 const navItems = [
-  { label: "Explore", href: "/explore" },
-  { label: "Lab", href: "/lab" },
+  { label: "Playbox", href: "/playbox" },
+  { label: "Community", href: "/community" },
+  { label: "Blog", href: "/blog" },
+  // Retained but not primary nav: /lab. Gated flag routes below.
   { label: "Social", href: "/social", visible: features.showSocial },
   { label: "Gallery", href: "/gallery", visible: features.showGallery },
   { label: "Directory", href: "/directory", visible: features.showDirectory },
-  { label: "Articles", href: "/articles", visible: features.showArticles },
   { label: "Jobs", href: "/jobs", visible: features.showJobs },
-  { label: "Pricing", href: "/pricing", visible: features.showPricing },
 ];
 
 function useScrollVisibility(threshold = 50) {
@@ -22,8 +23,7 @@ function useScrollVisibility(threshold = 50) {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
+    const onScrollY = (y: number) => {
       if (y === 0) {
         setIsVisible(true);
       } else if (y > lastScrollY.current && y > threshold) {
@@ -33,8 +33,22 @@ function useScrollVisibility(threshold = 50) {
       }
       lastScrollY.current = y;
     };
+    const onScroll = () => onScrollY(window.scrollY);
+    // Compositions render in a same-origin iframe, so the parent window never
+    // scrolls on those pages; bundles post their scroll position instead
+    // (isp:scroll bridge — publishing contract, community README).
+    const onMessage = (e: MessageEvent) => {
+      if (e.origin !== window.location.origin) return;
+      if (e.data?.type === "isp:scroll" && typeof e.data.y === "number") {
+        onScrollY(e.data.y);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("message", onMessage);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("message", onMessage);
+    };
   }, [threshold]);
 
   return isVisible;
@@ -46,12 +60,16 @@ export const Header = () => {
   const isVisible = useScrollVisibility();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const visibleItems = navItems.filter((item) => item.visible !== false);
+  const { isAdmin } = useStudioRole();
+
+  const visibleItems = [
+    ...navItems.filter((item) => item.visible !== false),
+    ...(isAdmin ? [{ label: "Admin", href: "/admin" }] : []),
+  ];
 
   return (
     <div
       className={cn(
-        "dark",
         "fixed top-5 left-1/2 z-[1000] w-[90%] max-w-[1200px]",
         "transition-transform duration-400 ease-[cubic-bezier(0.33,1,0.68,1)]",
         isVisible
@@ -60,23 +78,19 @@ export const Header = () => {
       )}
     >
       <header
-        style={{ fontFamily: "'Inter', system-ui, -apple-system, sans-serif" }}
         className={cn(
           "flex items-center rounded-full px-6 py-3",
           "transition-all duration-300",
-          "bg-[rgba(18,18,20,0.88)]",
+          "bg-[rgba(255,255,255,0.72)]",
           "backdrop-blur-[16px] backdrop-saturate-[180%]",
-          "border border-[rgba(255,255,255,0.08)]",
-          "shadow-[0_8px_32px_rgba(0,0,0,0.18)]",
+          "border border-[rgba(0,0,0,0.08)]",
+          "shadow-[0_8px_32px_rgba(0,0,0,0.10)]",
         )}
       >
-        {/* Logo */}
+        {/* Logo — brand mark + Domaine Display wordmark (dark-ink variant for the light pill) */}
         <div className="mr-4 flex shrink-0">
-          <Link to="/" aria-label="Home" className="flex items-center gap-2.5">
-            <img src={logoSrc} alt="Infinite Spaces" className="h-8 w-8" />
-            <span className="text-sm font-semibold tracking-tight text-white">
-              Infinite Spaces
-            </span>
+          <Link to="/" aria-label="Infinite Spaces — Home" className="flex items-center">
+            <img src={logoSrc} alt="Infinite Spaces" className="h-9 w-auto" />
           </Link>
         </div>
 
@@ -86,10 +100,10 @@ export const Header = () => {
             <Link key={item.href} to={item.href}>
               <span
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-foreground",
+                  "text-sm font-medium transition-colors hover:text-neutral-900",
                   location.pathname === item.href
-                    ? "text-foreground"
-                    : "text-muted-foreground",
+                    ? "text-neutral-900"
+                    : "text-neutral-600",
                 )}
               >
                 {item.label}
@@ -103,7 +117,11 @@ export const Header = () => {
           {/* Desktop auth */}
           <div className="hidden md:flex">
             {!isPending && isAnonymous && (
-              <Button size="sm" onClick={login}>
+              <Button
+                size="sm"
+                onClick={login}
+                className="bg-[#789bde] text-[#0c0c14] hover:bg-[#8aa9e4]"
+              >
                 Login
               </Button>
             )}
@@ -145,7 +163,11 @@ export const Header = () => {
                 ))}
                 <Separator />
                 {!isPending && isAnonymous && (
-                  <Button size="sm" onClick={login}>
+                  <Button
+                    size="sm"
+                    onClick={login}
+                    className="bg-[#789bde] text-[#0c0c14] hover:bg-[#8aa9e4]"
+                  >
                     Login
                   </Button>
                 )}

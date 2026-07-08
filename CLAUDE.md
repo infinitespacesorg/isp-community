@@ -10,7 +10,7 @@ Public community website for Infinite Spaces. React + Vite SPA deployed to Cloud
 ## Stack
 - React 18 + Vite 6 (SPA)
 - React Router DOM v6 (client-side routing)
-- Tailwind CSS v3 + Radix UI primitives
+- Tailwind CSS v4 (`@theme inline` in `tailwind.css`) + Radix UI primitives
 - Lucide React icons
 - TypeScript
 

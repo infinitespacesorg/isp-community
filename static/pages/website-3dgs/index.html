@@ -38,6 +38,60 @@
       <meta name="twitter:image" content="https://dkljmdqtvrkrnjdtdsjw.supabase.co/storage/v1/object/public/studio/assets/og-image.jpg">
     </head>
     <body>
-        <div id="root"></div>
+        <div id="root"></div>
+        <!-- isp:scroll bridge — required by the composition publishing contract
+             (community README): posts scroll position to the parent shell so
+             the floating nav can hide/reveal, and posts scroll-overflow at the
+             composition's end so the parent can reveal its footer. -->
+        <script>
+            (function () {
+                if (window.self === window.top) return;
+                var origin = window.location.origin;
+                var atEnd = false;
+                var parentScrolled = false;
+                window.addEventListener("message", function (e) {
+                    if (e.origin !== origin) return;
+                    if (e.data && e.data.type === "isp:parent-scroll") {
+                        parentScrolled = !!e.data.scrolled;
+                    }
+                });
+                document.addEventListener(
+                    "scroll",
+                    function (e) {
+                        var t = e.target;
+                        var el =
+                            t === document || t === document.documentElement || t === document.body
+                                ? document.documentElement
+                                : t;
+                        var y =
+                            el === document.documentElement
+                                ? window.scrollY || el.scrollTop || 0
+                                : el.scrollTop || 0;
+                        atEnd = el.scrollHeight - (y + el.clientHeight) < 4;
+                        window.parent.postMessage({ type: "isp:scroll", y: y }, origin);
+                    },
+                    { capture: true, passive: true }
+                );
+                document.addEventListener(
+                    "wheel",
+                    function (e) {
+                        if (e.deltaY > 0 && atEnd && !parentScrolled) {
+                            window.parent.postMessage(
+                                { type: "isp:scroll-overflow", direction: "down" },
+                                origin
+                            );
+                        } else if (e.deltaY < 0 && parentScrolled) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.parent.postMessage(
+                                { type: "isp:scroll-overflow", direction: "up" },
+                                origin
+                            );
+                        }
+                    },
+                    { capture: true, passive: false }
+                );
+            })();
+        </script>
     </body>
 </html>

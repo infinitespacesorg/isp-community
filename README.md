@@ -14,7 +14,7 @@ npm install
 npm run dev
 ```
 
-The dev server starts at `http://localhost:5173`.
+The dev server starts at `http://localhost:5174` (see `vite.config.ts`).
 
 ## Scripts
 
@@ -27,7 +27,7 @@ The dev server starts at `http://localhost:5173`.
 
 - **React 18** + **Vite 6** (SPA)
 - **React Router DOM v6** (client-side routing)
-- **Tailwind CSS v3** + **Radix UI** primitives
+- **Tailwind CSS v4** + **Radix UI** primitives
 - **Lucide React** icons
 - **TypeScript**
 

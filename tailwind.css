@@ -9,10 +9,20 @@
 
 /* Custom theme: fonts, colors (Shadcn-compatible), radii */
 @theme inline {
-  /* Fonts */
-  --font-aeonik: "Aeonik", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-aeonik-mono: "Aeonik Mono", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Fonts — Aspekta stands in for Aeonik (Q10, review 2026-07-07); utility
+     names keep the legacy aeonik naming to avoid app-wide class churn.
+     NOTE: brand canon specifies Literata (brand-guidelines.md); Aspekta kept
+     per Steve 2026-07-08 (Q24) — revisit. */
+  --font-aeonik: "Aspekta", "Aspekta Fallback", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-aeonik-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-inter: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Brand colorway (brand-guidelines.md §3) — the only palette. */
+  --color-night: #333333;   /* dark surfaces (warm dark, not pure black) */
+  --color-day: #cccccc;     /* text / light surfaces */
+  --color-air: #789bde;     /* accent, links (logo blue) */
+  --color-earth: #4b4237;   /* warm ground, secondary */
+  --color-light: #fc5130;   /* energy, CTAs, emphasis */
 
   /* Colors (Shadcn-compatible HSL variables) — canonical from @infinitespaces/ui */
   --color-background: hsl(var(--background));
@@ -67,19 +77,20 @@
   to { height: 0; }
 }
 
-/* Font face declarations */
+/* Font face declarations — Aspekta variable font (OFL-1.1, static/fonts/),
+   local-font fallback registered with size-adjust to limit layout shift */
 @font-face {
-  /* This font could not be included automatically because of legal reasons. Please add it manually or switch to another font */
-  font-family: 'Aeonik';
+  font-family: "Aspekta";
   font-weight: 100 900;
   font-style: normal;
+  font-display: swap;
+  src: url("/fonts/AspektaVF.woff2") format("woff2");
 }
 
 @font-face {
-  /* This font could not be included automatically because of legal reasons. Please add it manually or switch to another font */
-  font-family: 'Aeonik Mono';
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Aspekta Fallback";
+  src: local("Arial");
+  size-adjust: 100%;
 }
 
 /* ==========================================================================

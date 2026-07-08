@@ -10,7 +10,7 @@ const footerLinkStyle =
 const footerLinkStyleLast = footerLinkStyle.replace("mb-7", "").replace("md:mb-10", "");
 
 const allNavLinks = [
-  { href: "/explore", text: "Explore", visible: true },
+  { href: "/playbox", text: "Playbox", visible: true },
   { href: "/lab", text: "Lab", visible: true },
   { href: "/social", text: "Social", visible: features.showSocial },
   { href: "/gallery", text: "Gallery", visible: features.showGallery },
@@ -38,22 +38,22 @@ export const Footer = () => {
       <FooterColumn
         columnVariant="col-start-4 mt-[42px] md:col-start-9"
         links={[
-          { href: "#", text: "About", linkVariant: footerLinkStyle },
+          { href: "/about", text: "About", linkVariant: footerLinkStyle },
           {
-            href: "#",
+            href: "/playbox/pricing",
             text: "FAQs",
             linkVariant: footerLinkStyle.replace("uppercase", ""),
           },
-          { href: "#", text: "Contact", linkVariant: footerLinkStyle },
+          { href: "/contact", text: "Contact", linkVariant: footerLinkStyle },
           { href: "#", text: "Community Guidelines", linkVariant: footerLinkStyleLast },
         ]}
       />
       <FooterColumn
         columnVariant="col-start-1 mt-14 md:col-start-11"
         links={[
-          { href: "#", text: "Bluesky", linkVariant: footerLinkStyle },
-          { href: "#", text: "Instagram", linkVariant: footerLinkStyle },
-          { href: "#", text: "LinkedIn", linkVariant: footerLinkStyleLast },
+          { href: "https://bsky.app/profile/infinitespaces.bsky.social", text: "Bluesky", linkVariant: footerLinkStyle },
+          { href: "https://www.instagram.com/infinite.spaces/", text: "Instagram", linkVariant: footerLinkStyle },
+          { href: "https://www.tiktok.com/@infinite.spaces.studios", text: "TikTok", linkVariant: footerLinkStyleLast },
         ]}
       />
       <FooterCredits

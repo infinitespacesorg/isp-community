@@ -22,6 +22,33 @@ export type UserProfile = {
   createdAt: string;
 };
 
+// Community profiles — user | community | place (venue).
+// See product/specs/components/community/community-stories-profiles-design.md
+export type CommunityProfileType = "user" | "community" | "place";
+
+export type CommunityProfile = {
+  id: string;
+  type: CommunityProfileType;
+  handle: string; // URL slug, e.g. "is-community"
+  displayName: string;
+  avatarUrl?: string;
+  bio?: string;
+  location?: string;
+};
+
+// A "story" — a scroll-driven composition (R2-hosted), owned by a profile.
+export type Story = {
+  id: string;
+  profileHandle: string;
+  slug: string;
+  title: string;
+  description?: string;
+  thumbnailUrl?: string;
+  status: "draft" | "published";
+  publishedAt?: string;
+  path: string; // served path (iframe src)
+};
+
 export type Article = {
   id: string;
   title: string;
@@ -117,6 +144,53 @@ export const galleryProjects: GalleryProject[] = [
     description: "Visual editor for semantic world models.",
     imageSrc: "https://placehold.co/800x500/3b0764/ffffff?text=World+Editor",
     createdAt: "2026-01-30T12:00:00Z",
+  },
+];
+
+export const communityProfiles: CommunityProfile[] = [
+  {
+    id: "isc",
+    type: "community",
+    handle: "is-community",
+    displayName: "IS Community",
+    bio: "Stories from Infinite Spaces and our collaborators.",
+    location: "Everywhere",
+  },
+  {
+    id: "u-alex",
+    type: "user",
+    handle: "alex",
+    displayName: "Alex",
+    location: "San Francisco, CA",
+  },
+  {
+    id: "u-jordan",
+    type: "user",
+    handle: "jordan",
+    displayName: "Jordan",
+    location: "London, UK",
+  },
+  {
+    id: "p-warehouse",
+    type: "place",
+    handle: "the-warehouse",
+    displayName: "The Warehouse",
+    bio: "A live venue for spatial performances.",
+    location: "Berlin, DE",
+  },
+];
+
+export const stories: Story[] = [
+  {
+    id: "story-website-3dgs",
+    profileHandle: "is-community",
+    slug: "website-3dgs",
+    title: "Infinite Spaces",
+    description: "Immersive 3DGS scroll experience",
+    thumbnailUrl: "/pages/website-3dgs/assets/icon.svg",
+    status: "published",
+    publishedAt: "2026-02-14",
+    path: "/pages/website-3dgs/index.html",
   },
 ];
 
