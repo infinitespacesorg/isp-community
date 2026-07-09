@@ -44,7 +44,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // new users). The hosted-accounts-UI flow can slot in behind this same
   // interface once the accounts side is refactored (design Q27).
   const login = useCallback(async () => {
-    if (!supabase) return;
+    if (!supabase) {
+      console.error(
+        "[auth] Supabase client not configured — set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local and restart the dev server.",
+      );
+      return;
+    }
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo: `${window.location.origin}/auth/callback` },
