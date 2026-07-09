@@ -162,7 +162,8 @@ export function useStories(): QueryResult<Story> {
       thumbnailUrl: row.thumbnail_url ? String(row.thumbnail_url) : undefined,
       status: (row.status === "published" ? "published" : "draft"),
       publishedAt: row.published_at ? String(row.published_at) : undefined,
-      path: row.slug ? `/stories/${String(row.slug)}` : "",
+      // Served from /pages/<slug>/ today (pre-R2, gate G-D).
+      path: row.slug ? `/pages/${String(row.slug)}/index.html` : "",
     }),
     { orderBy: "published_at" },
   );
