@@ -14,7 +14,7 @@ export const BlogPostPage = () => {
   return (
     <div className="box-border flex flex-col min-h-screen">
       <main className="basis-[0%] grow">
-        <article className="mb-[84px] mx-3 md:mb-40 md:mx-9">
+        <article className="mx-auto max-w-3xl px-6 mb-[84px] md:mb-40">
           <div className="pt-28 md:pt-32">
             <Link
               to="/blog"

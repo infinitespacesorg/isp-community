@@ -181,3 +181,78 @@
     font-family: "JetBrains Mono", monospace;
   }
 }
+
+/* Blog post prose — Markdoc renders native tags (h2, p, ul, ...) that
+   Tailwind preflight flattens and that Markdoc's React renderer won't route
+   through the components map. Style them here (see src/keystatic/render.tsx). */
+.post-prose h1,
+.post-prose h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.post-prose h1 { font-size: 1.875rem; }
+.post-prose h2 { font-size: 1.5rem; }
+@media (min-width: 768px) {
+  .post-prose h1 { font-size: 2.25rem; }
+  .post-prose h2 { font-size: 1.875rem; }
+}
+.post-prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.post-prose p {
+  margin: 1.25rem 0;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  color: #262626;
+}
+.post-prose ul,
+.post-prose ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+.post-prose ul { list-style: disc; }
+.post-prose ol { list-style: decimal; }
+.post-prose li {
+  margin: 0.5rem 0;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  color: #262626;
+}
+.post-prose a {
+  color: var(--color-air);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post-prose a:hover { text-decoration: none; }
+.post-prose blockquote {
+  margin: 1.5rem 0;
+  border-left: 2px solid var(--color-air);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: #525252;
+}
+.post-prose hr { margin: 2.5rem 0; border-color: #e5e5e5; }
+.post-prose img { margin: 1.5rem 0; width: 100%; border-radius: 0.5rem; }
+.post-prose :not(pre) > code {
+  background: #f5f5f5;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-aeonik-mono);
+  font-size: 0.9em;
+}
+.post-prose pre {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  background: #171717;
+  padding: 1rem;
+  color: #f5f5f5;
+}
+.post-prose strong { font-weight: 700; }
+.post-prose em { font-style: italic; }

@@ -25,7 +25,7 @@ export const StoryEmbed = ({ slug }: StoryEmbedProps) => {
   }
 
   return (
-    <figure className="my-12 -mx-3 md:-mx-9">
+    <figure className="my-12 -mx-6">
       <div className="overflow-hidden border-y border-neutral-200 bg-black">
         <iframe
           src={story.path}
@@ -36,7 +36,7 @@ export const StoryEmbed = ({ slug }: StoryEmbedProps) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
         />
       </div>
-      <figcaption className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 px-3 md:px-9">
+      <figcaption className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 px-6">
         <span className="text-sm font-semibold">{story.title}</span>
         {story.description && (
           <span className="text-sm text-neutral-500">{story.description}</span>
