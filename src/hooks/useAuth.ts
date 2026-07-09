@@ -4,8 +4,6 @@ import type { User } from "@supabase/supabase-js";
 import type { ReactNode } from "react";
 import { createElement } from "react";
 
-const accountsUrl = import.meta.env.VITE_ACCOUNTS_URL || "https://accounts.infinitespaces.ai";
-
 type AuthState = {
   user: User | null;
   isPending: boolean;
@@ -41,15 +39,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const login = useCallback(() => {
-    const redirectTo = `${window.location.origin}/auth/callback`;
-    window.location.href = `${accountsUrl}/auth/login?redirect_to=${encodeURIComponent(redirectTo)}`;
+  // Path A: sign in against the shared ISP Supabase identity provider. Google
+  // OAuth (PKCE) — sign-in and sign-up are the same action (Google provisions
+  // new users). The hosted-accounts-UI flow can slot in behind this same
+  // interface once the accounts side is refactored (design Q27).
+  const login = useCallback(async () => {
+    if (!supabase) return;
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
   }, []);
 
-  const signup = useCallback(() => {
-    const redirectTo = `${window.location.origin}/auth/callback`;
-    window.location.href = `${accountsUrl}/auth/register?redirect_to=${encodeURIComponent(redirectTo)}`;
-  }, []);
+  const signup = login;
 
   const logout = useCallback(async () => {
     if (supabase) {
