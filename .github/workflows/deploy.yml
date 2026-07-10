@@ -52,6 +52,13 @@ jobs:
         working-directory: isp-community
         run: npm ci
 
+      # The @infinitespaces/ui file: dep ships raw TS; Vite compiles it, so its
+      # own deps (clsx, radix, ...) must be installed in the sibling checkout or
+      # rollup can't resolve them.
+      - name: Install @infinitespaces/ui dependencies
+        working-directory: isp-account-management/packages/ui
+        run: npm install --no-audit --no-fund
+
       - name: Build
         working-directory: isp-community
         env:
