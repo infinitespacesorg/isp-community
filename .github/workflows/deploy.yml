@@ -1,0 +1,70 @@
+name: Deploy to Cloudflare Pages
+
+# CI push to Cloudflare Pages. We build in Actions (not on Cloudflare) because
+# the app depends on `@infinitespaces/ui` via a file: path into the sibling
+# isp-account-management repo — Cloudflare's Git build only clones this repo, so
+# it can't resolve that dep. Here we check out BOTH repos as siblings, build,
+# then upload the static dist/ to Pages (direct upload). No sibling-dep problem,
+# still fully CI on merge to main.
+#
+# ── One-time setup (repo owner) ────────────────────────────────────────────
+# Secrets (Settings → Secrets and variables → Actions → Secrets):
+#   CLOUDFLARE_API_TOKEN   — token with "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID  — your account id
+#   ISP_REPO_TOKEN         — PAT (isp-deploy-bot) with read access to
+#                            infinitespacesorg/isp-account-management
+#   VITE_SUPABASE_ANON_KEY — public anon key (kept as a secret to avoid logs)
+# Variables (… → Variables):
+#   VITE_SUPABASE_URL, VITE_ACCOUNTS_URL, VITE_STUDIO_SPACE_ID, VITE_KEYSTATIC_REPO
+# Also once: `wrangler pages project create isp-community --production-branch main`
+# (or create the "isp-community" Pages project in the dashboard).
+# For the /keystatic editor in prod, set KEYSTATIC_GITHUB_* on the Pages project
+# env (separate from this build).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout community site
+        uses: actions/checkout@v4
+        with:
+          path: isp-community
+
+      - name: Checkout account-management (provides @infinitespaces/ui)
+        uses: actions/checkout@v4
+        with:
+          repository: infinitespacesorg/isp-account-management
+          ref: main
+          token: ${{ secrets.ISP_REPO_TOKEN }}
+          path: isp-account-management
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: isp-community
+        run: npm ci
+
+      - name: Build
+        working-directory: isp-community
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_ACCOUNTS_URL: ${{ vars.VITE_ACCOUNTS_URL }}
+          VITE_STUDIO_SPACE_ID: ${{ vars.VITE_STUDIO_SPACE_ID }}
+          VITE_KEYSTATIC_REPO: ${{ vars.VITE_KEYSTATIC_REPO }}
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy isp-community/dist --project-name=isp-community --branch=main
