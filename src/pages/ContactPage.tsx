@@ -11,7 +11,7 @@ export const ContactPage = () => (
     <main className="box-border caret-transparent basis-[0%] grow">
       <section className="box-border caret-transparent mb-[84px] mx-3 md:mb-40 md:mx-9">
         <div className="pt-28 md:pt-32 max-w-2xl">
-          <h1 className="text-4xl font-black tracking-[-0.36px] leading-[35.28px] mb-3 md:text-[44.8px] md:tracking-[-0.48px] md:leading-[43.904px]">
+          <h1 className="text-3xl font-black tracking-[-0.36px] leading-[29.4px] mb-3 md:text-4xl md:tracking-[-0.48px] md:leading-[35.28px]">
             Contact
           </h1>
           <p className="text-neutral-500 font-aeonik-mono text-sm uppercase tracking-[0.18px] mb-10">

@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "sync-content": "node scripts/sync-content.mjs",
+    "prebuild": "node scripts/sync-content.mjs",
     "build": "vite build"
   },
   "dependencies": {
@@ -21,6 +23,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.62.2"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",

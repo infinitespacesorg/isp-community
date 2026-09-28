@@ -207,8 +207,8 @@
 }
 .post-prose p {
   margin: 1.25rem 0;
-  font-size: 1.125rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
   color: #262626;
 }
 .post-prose ul,
@@ -220,8 +220,8 @@
 .post-prose ol { list-style: decimal; }
 .post-prose li {
   margin: 0.5rem 0;
-  font-size: 1.125rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
   color: #262626;
 }
 .post-prose a {

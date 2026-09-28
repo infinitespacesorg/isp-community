@@ -1,0 +1,34 @@
+{
+  "//": "Route access + visibility manifest. Each route is on/off per deploy environment: 'staging' and 'production'. A disabled route redirects to / AND its links disappear from the header, footer, and sub-navs. Routes not listed here are always on. Env resolution: DEPLOY_ENV, else CF_PAGES_BRANCH === 'main' ? production : staging (see vite.config.ts). CI sets DEPLOY_ENV=staging for every deploy, including main -> isp-community.pages.dev; the 'production' column takes effect when infinitespaces.org cuts over to this site.",
+  "routes": {
+    "/": { "staging": true, "production": true },
+    "/community": { "staging": true, "production": true },
+    "/playbox": { "staging": true, "production": true },
+    "/playbox/features": { "staging": true, "production": true },
+    "/playbox/showcase": { "staging": true, "production": true },
+    "/playbox/pricing": { "staging": true, "production": true },
+    "/blog": { "staging": true, "production": true },
+    "/about": { "staging": true, "production": true },
+    "/contact": { "staging": true, "production": true },
+    "/lab": { "staging": true, "production": true },
+    "/waitlist": { "staging": true, "production": true },
+
+    "/careers": { "staging": true, "production": false },
+
+    "/social": { "staging": true, "production": false },
+    "/gallery": { "staging": true, "production": false },
+    "/directory": { "staging": true, "production": false },
+    "/articles": { "staging": true, "production": false },
+    "/jobs": { "staging": false, "production": false },
+    "/pricing": { "staging": true, "production": false },
+
+    "/playbox-privacy": { "staging": true, "production": true },
+    "/playbox-data-deletion": { "staging": true, "production": true },
+
+    "/community-guidelines": { "staging": false, "production": false },
+    "/terms-and-conditions": { "staging": false, "production": false },
+    "/privacy-policy": { "staging": false, "production": false },
+    "/acceptable-use-policy": { "staging": false, "production": false },
+    "/disclaimer": { "staging": false, "production": false }
+  }
+}

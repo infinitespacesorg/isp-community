@@ -1,12 +1,13 @@
+<!-- SYNCED COPY - do not edit. Edit business/marketing/website/playbox-overview.md and run `npm run sync-content`. -->
 # You're not watching. You're in it.
 
-> Every space has a world inside it. Every person has a role to play. Playbox is the surface where creatives of every kind build living, immersive worlds — and invite people inside.
+> Every space has a world inside it. Playbox is how you wake it up — author a living world once, then pilot it into any place: a venue, a stream, a living room.
 
 [Come build with us](/waitlist){primary}
 [See it live](/playbox/showcase)
 
-## A new medium, finally with its participatory layer
-Film, broadcast, social, gaming — every medium eventually got a layer where the audience takes part. Live, collaborative world-building never had one. Playbox is that surface: authoring, audience, and the live moment on one canvas.
+## The screen pulled us out of the room. This pulls the world back in.
+For fifty years, screens took us somewhere else — heads down, out of the room. Playbox turns the room itself into the medium: every screen, light, speaker, and camera in a space joins into one instrument, and that instrument plays with the people in it. You walk in and you're part of it. No headset, nothing to install — the world is already awake.
 
 ## For creatives of every stripe
 Whatever you make, Playbox is a place to make it live and let people in.
@@ -17,7 +18,7 @@ Whatever you make, Playbox is a place to make it live and let people in.
 - Curators build exhibitions that adapt, remember, and travel between spaces
 
 ## Three ways to work
-One tool for the whole arc — no hand-off between the thing that designs and the thing that runs.
+One tool for the whole arc — the tool that designs the experience is the same tool that runs it.
 - Bench — author, compose, and wire your world
 - Run — operate and conduct it live, with people in it
 - Beam — send it out, or step into someone else's
@@ -38,11 +39,18 @@ None of this is metaphor.
 - A city-wide game where parks, bars, and rooftops are levels
 - A museum that remembers everyone who walked through
 
+## Worlds that remember
+A world doesn't reset when the lights come up. It persists — across nights, across places, across everyone who was there.
+- Show fifty is shaped by show one
+- Returning fans get callbacks — the world knows them
+- What the crowd made stays made: your world, your audience, and everything they built together keep compounding
+
 ## Built to feel instant, and to be yours
 The things that make a live world work, without the things that get in the way.
 - A live loop under 125ms — presence becomes part of the show without anyone doing anything
+- Author once, run it anywhere — a venue, a stream, a beam between places, a home
 - Runs on commodity hardware, native on Windows and macOS
-- Open and interoperable; your world is your own, to keep, move, or hand off
+- Your world is your own — to keep, move, self-host, or hand off — and so is the data it generates
 
 ## Come build with us {cta}
 [Create your first world](/waitlist){primary}

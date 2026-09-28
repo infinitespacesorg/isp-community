@@ -39,12 +39,12 @@ export const BlogPostPage = () => {
               )}
             </div>
 
-            <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-[-0.36px] leading-tight md:text-[44.8px] md:tracking-[-0.48px]">
+            <h1 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.36px] leading-tight md:text-4xl md:tracking-[-0.48px]">
               {post.title}
             </h1>
 
             {post.summary && (
-              <p className="mt-4 max-w-2xl text-xl text-neutral-500">{post.summary}</p>
+              <p className="mt-4 max-w-2xl text-lg text-neutral-500">{post.summary}</p>
             )}
 
             {post.coverImage && (

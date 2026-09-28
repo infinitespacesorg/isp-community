@@ -51,7 +51,7 @@ export function ProductHero({
     <section className="mx-auto max-w-5xl px-6 pt-40 pb-16 text-center md:pt-48">
       <h1
         className={cn(
-          "text-4xl font-black leading-[1.05] tracking-[-0.02em] md:text-6xl",
+          "text-3xl font-black leading-[1.05] tracking-[-0.02em] md:text-4xl",
           gradientHeadline &&
             "bg-gradient-to-br from-light to-earth bg-clip-text text-transparent",
         )}
@@ -59,7 +59,7 @@ export function ProductHero({
         {title}
       </h1>
       {subtitle && (
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-500 md:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-base text-neutral-500 md:text-lg">
           {subtitle}
         </p>
       )}
@@ -117,9 +117,9 @@ export function ProductSection({
       {(title || lead) && (
         <div className="mb-10 max-w-2xl">
           {title && (
-            <h2 className="text-3xl font-bold tracking-[-0.01em] md:text-4xl">{title}</h2>
+            <h2 className="text-2xl font-bold tracking-[-0.01em] md:text-3xl">{title}</h2>
           )}
-          {lead && <p className="mt-3 text-lg text-neutral-500">{lead}</p>}
+          {lead && <p className="mt-3 text-base text-neutral-500">{lead}</p>}
         </div>
       )}
       {children}
@@ -141,19 +141,19 @@ export function NumberedSections({ items }: { items: NumberedItem[] }) {
       {items.map((f, i) => (
         <section key={f.title} className="border-t border-neutral-200 py-14 first:border-t-0">
           <div className="grid gap-8 md:grid-cols-[auto_1fr]">
-            <div className="bg-gradient-to-br from-air to-earth bg-clip-text font-aeonik-mono text-4xl font-bold tabular-nums text-transparent">
+            <div className="bg-gradient-to-br from-air to-earth bg-clip-text font-aeonik-mono text-3xl font-bold tabular-nums text-transparent">
               {String(i + 1).padStart(2, "0")}
             </div>
             <div>
               <div className="mb-3 flex items-center gap-3">
-                <h3 className="text-2xl font-semibold md:text-3xl">{f.title}</h3>
+                <h3 className="text-xl font-semibold md:text-2xl">{f.title}</h3>
                 {f.badge && (
                   <span className="rounded-full bg-air px-2 py-0.5 text-[10px] font-aeonik-mono uppercase tracking-[0.18px] text-[#0c0c14]">
                     {f.badge}
                   </span>
                 )}
               </div>
-              <p className="mb-6 max-w-2xl text-lg text-neutral-500">{f.intro}</p>
+              <p className="mb-6 max-w-2xl text-base text-neutral-500">{f.intro}</p>
               <ul className="grid gap-2 sm:grid-cols-2">
                 {f.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2 text-sm text-neutral-600">
@@ -175,7 +175,7 @@ export function ProductCta({ title, ctas = [] }: { title: string; ctas?: Cta[] }
   return (
     <section className="border-t border-neutral-200">
       <div className="mx-auto max-w-4xl px-6 py-20 text-center">
-        <h2 className="bg-gradient-to-br from-light to-earth bg-clip-text text-3xl font-black tracking-[-0.01em] text-transparent md:text-5xl">
+        <h2 className="bg-gradient-to-br from-light to-earth bg-clip-text text-2xl font-black tracking-[-0.01em] text-transparent md:text-4xl">
           {title}
         </h2>
         {ctas.length > 0 && (

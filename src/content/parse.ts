@@ -47,6 +47,7 @@ export function parseProductContent(md: string): ProductContent {
   for (const rawLine of md.split(/\r?\n/)) {
     const line = rawLine.trim();
     if (!line) continue;
+    if (line.startsWith("<!--")) continue; // sync banner / comments
 
     if (line.startsWith("# ")) {
       hero.title = line.slice(2).trim();

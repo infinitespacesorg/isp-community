@@ -5,18 +5,20 @@ import logoSrc from "@/assets/logo-light.svg";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useStudioRole } from "@/hooks/useStudioRole";
-import { features } from "@/config/features";
+import { routeEnabled } from "@/config/routes";
 
+// Visibility follows routes.manifest.json — a page disabled for this deploy
+// environment drops out of the nav automatically. Retained but not primary
+// nav: /lab.
 const navItems = [
   { label: "Playbox", href: "/playbox" },
   { label: "Community", href: "/community" },
   { label: "Blog", href: "/blog" },
-  // Retained but not primary nav: /lab. Gated flag routes below.
-  { label: "Social", href: "/social", visible: features.showSocial },
-  { label: "Gallery", href: "/gallery", visible: features.showGallery },
-  { label: "Directory", href: "/directory", visible: features.showDirectory },
-  { label: "Jobs", href: "/jobs", visible: features.showJobs },
-];
+  { label: "Social", href: "/social" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Directory", href: "/directory" },
+  { label: "Careers", href: "/careers" },
+].filter((item) => routeEnabled(item.href));
 
 function useScrollVisibility(threshold = 50) {
   const [isVisible, setIsVisible] = useState(true);
@@ -63,7 +65,7 @@ export const Header = () => {
   const { isAdmin } = useStudioRole();
 
   const visibleItems = [
-    ...navItems.filter((item) => item.visible !== false),
+    ...navItems,
     ...(isAdmin ? [{ label: "Admin", href: "/admin" }] : []),
   ];
 

@@ -21,9 +21,14 @@ name: Deploy to Cloudflare Pages
 # For the /keystatic editor in prod, set KEYSTATIC_GITHUB_* on the Pages project
 # env (separate from this build).
 
+# Every branch deploys: main → isp-community.pages.dev, any other branch → a
+# Cloudflare Pages preview URL. All builds use the routes manifest "staging"
+# column for now: pages.dev is the staging site, and the public production site
+# is still infinitespaces.org (a separate stack). When infinitespaces.org cuts
+# over to this site, add a production build gated on that target, not on main.
 on:
   push:
-    branches: [main]
+    branches: ["**"]
   workflow_dispatch:
 
 jobs:
@@ -67,6 +72,7 @@ jobs:
           VITE_ACCOUNTS_URL: ${{ vars.VITE_ACCOUNTS_URL }}
           VITE_STUDIO_SPACE_ID: ${{ vars.VITE_STUDIO_SPACE_ID }}
           VITE_KEYSTATIC_REPO: ${{ vars.VITE_KEYSTATIC_REPO }}
+          DEPLOY_ENV: staging
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
@@ -74,4 +80,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy isp-community/dist --project-name=isp-community --branch=main
+          command: pages deploy isp-community/dist --project-name=isp-community --branch=${{ github.ref_name }}

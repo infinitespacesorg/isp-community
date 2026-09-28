@@ -1,12 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@infinitespaces/ui";
+import { routeEnabled } from "@/config/routes";
 
+// Tabs follow routes.manifest.json — a disabled sub-page drops out.
 const tabs = [
   { label: "Overview", href: "/playbox" },
   { label: "Features", href: "/playbox/features" },
   { label: "Showcase", href: "/playbox/showcase" },
   { label: "Pricing", href: "/playbox/pricing" },
-];
+].filter((tab) => routeEnabled(tab.href));
 
 /**
  * Secondary navigation for the Playbox product section. Sits below the global

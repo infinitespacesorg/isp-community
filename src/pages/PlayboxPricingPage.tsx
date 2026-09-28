@@ -4,76 +4,42 @@ import { cn } from "@infinitespaces/ui";
 import { Footer } from "@/sections/Footer";
 import { PlayboxSubNav } from "@/sections/PlayboxSubNav";
 import { ProductPage, ProductHero } from "@/sections/product";
+import { parseProductContent } from "@/content/parse";
+import pricingMd from "@/content/playbox-pricing.md?raw";
+import faqMd from "@/content/faq.md?raw";
 
 // NOTE: prices are DRAFT placeholders (Q20) — final tiers/numbers TBD by Steve.
 // Layout mirrors the realhorizons.ai /pricing pattern: 4 tiers, one highlighted,
 // "Everything in X, plus" feature lists, single CTA per tier, FAQ below.
-const tiers = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    blurb: "For trying Playbox and beaming your first world.",
-    features: ["1 published world", "Community profile", "Browser authoring", "Watermarked exports"],
-    cta: "Get Started",
-    to: "/waitlist",
-  },
-  {
-    name: "Creator",
-    price: "$19",
-    period: "/month",
-    blurb: "For individual artists shipping regularly.",
-    features: [
-      "Everything in Free, plus",
-      "Unlimited published worlds",
-      "Desktop app + live preview",
-      "No watermark",
-      "Custom profile handle",
-    ],
-    cta: "Get Started",
-    to: "/waitlist",
-    featured: true,
-  },
-  {
-    name: "Studio",
-    price: "$49",
-    period: "/month",
-    blurb: "For teams and communities building together.",
-    features: [
-      "Everything in Creator, plus",
-      "Community & place profiles",
-      "Real-time co-authoring",
-      "Promotion to the community home",
-      "Priority capacity",
-    ],
-    cta: "Get Started",
-    to: "/waitlist",
-  },
-  {
-    name: "Venue",
-    price: "Custom",
-    period: "",
-    blurb: "For places and events with live audiences.",
-    features: [
-      "Everything in Studio, plus",
-      "Live performance streaming",
-      "Dedicated capacity",
-      "SSO & admin controls",
-      "Onboarding support",
-    ],
-    cta: "Contact Us",
-    to: "/contact",
-  },
-];
+//
+// Tier copy lives in business/marketing/website/playbox-pricing.md (synced into
+// src/content). Each `##` section is one tier: `Name — Price period`, with
+// `{badge:...}` marking the highlighted card, the intro as the blurb, bullets
+// as the feature list, and the section link as the CTA.
+const pricing = parseProductContent(pricingMd);
 
-const faqs = [
-  { q: "What counts as a \"world\"?", a: "A world is a published, interactive space you build in Playbox — people can beam in and take part." },
-  { q: "Can I try before paying?", a: "Yes. The Free tier lets you publish one world with no time limit so you can see the whole arc." },
-  { q: "What's the difference between a user, community, and place profile?", a: "A user profile is you. A community profile is a shared brand or collective. A place profile represents a venue. Community and place profiles are available on Studio and above." },
-  { q: "Do you take a cut of anything?", a: "No. Your subscription is the price; what you build is yours." },
-  { q: "Can I change plans later?", a: "Anytime, up or down. Changes are prorated." },
-  { q: "Is there a discount for annual billing?", a: "Annual pricing is coming; for now all plans are billed monthly." },
-];
+const tiers = pricing.sections
+  .filter((s) => !s.cta)
+  .map((s) => {
+    const [name, priceRaw = ""] = s.title.split("—").map((t) => t.trim());
+    const [price = "", ...periodParts] = priceRaw.split(/\s+/);
+    return {
+      name,
+      price,
+      period: periodParts.join(" "),
+      blurb: s.intro,
+      features: s.bullets,
+      cta: s.ctas[0]?.label ?? "Get Started",
+      to: s.ctas[0]?.href ?? "/waitlist",
+      featured: Boolean(s.badge),
+      badge: s.badge,
+    };
+  });
+
+// FAQ copy lives in business/marketing/website/community/faq.md (synced into src/content).
+const faqs = parseProductContent(faqMd)
+  .sections.filter((s) => !s.cta)
+  .map((s) => ({ q: s.title, a: s.intro }));
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -94,10 +60,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export const PlayboxPricingPage = () => (
   <ProductPage>
     <PlayboxSubNav />
-    <ProductHero
-      title="Simple pricing for world-builders"
-      subtitle="Start free. Upgrade when you're ready to publish more, build together, or go live."
-    />
+    <ProductHero title={pricing.hero.title} subtitle={pricing.hero.subtitle} />
 
     <div className="mx-auto max-w-6xl px-6 pb-8">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -113,7 +76,7 @@ export const PlayboxPricingPage = () => (
           >
             {t.featured && (
               <span className="absolute -top-3 left-6 rounded-full bg-air px-3 py-0.5 text-[10px] font-aeonik-mono uppercase tracking-[0.18px] text-[#0c0c14]">
-                Most Popular
+                {t.badge}
               </span>
             )}
             <h3 className="text-lg font-semibold">{t.name}</h3>

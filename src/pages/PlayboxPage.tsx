@@ -29,7 +29,7 @@ export const PlayboxPage = () => (
 
     {lead && (
       <ProductSection title={lead.title}>
-        <p className="max-w-3xl text-lg text-neutral-500">{lead.intro}</p>
+        <p className="max-w-3xl text-base text-neutral-500">{lead.intro}</p>
       </ProductSection>
     )}
 

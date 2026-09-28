@@ -133,9 +133,21 @@ function keystaticDevApi(): Plugin {
   };
 }
 
+// ---------------------------------------------------------------------------
+// Deploy environment for the routes manifest (routes.manifest.json).
+// "production" only on the main-branch Cloudflare Pages deploy (or an explicit
+// DEPLOY_ENV override); local dev and preview deploys are "staging".
+// ---------------------------------------------------------------------------
+const deployEnv =
+  process.env.DEPLOY_ENV ??
+  (process.env.CF_PAGES_BRANCH === "main" ? "production" : "staging");
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react(), blogPostsPlugin(), keystaticDevApi()],
+  define: {
+    __DEPLOY_ENV__: JSON.stringify(deployEnv),
+  },
   publicDir: "./static",
   base: "./",
   resolve: {

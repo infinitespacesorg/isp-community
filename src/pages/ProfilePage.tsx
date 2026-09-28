@@ -51,7 +51,7 @@ export const ProfilePage = () => {
               <span className="rounded-full bg-neutral-900 px-2 py-0.5 text-[10px] font-aeonik-mono uppercase tracking-[0.18px] text-white">
                 {typeLabel[profile.type]}
               </span>
-              <h1 className="text-4xl font-black tracking-[-0.36px] leading-tight mt-2 md:text-[44.8px]">
+              <h1 className="text-3xl font-black tracking-[-0.36px] leading-tight mt-2 md:text-4xl">
                 {profile.displayName}
               </h1>
               <div className="text-neutral-500 text-sm">@{profile.handle}</div>
@@ -65,7 +65,7 @@ export const ProfilePage = () => {
           </div>
 
           {profile.bio && (
-            <p className="mt-6 max-w-2xl text-lg text-neutral-700">{profile.bio}</p>
+            <p className="mt-6 max-w-2xl text-base text-neutral-700">{profile.bio}</p>
           )}
 
           {/* Stories */}

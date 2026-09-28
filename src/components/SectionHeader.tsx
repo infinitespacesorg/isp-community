@@ -10,7 +10,7 @@ export type SectionHeaderProps = {
 export const SectionHeader = (props: SectionHeaderProps) => {
   return (
     <header className="items-center box-border caret-transparent flex flex-wrap justify-between mb-3.5 md:flex-nowrap md:mb-10">
-      <h2 className="text-4xl font-black box-border caret-transparent tracking-[-0.36px] leading-[35.28px] md:text-[44.8px] md:tracking-[-0.48px] md:leading-[43.904px]">
+      <h2 className="text-3xl font-black box-border caret-transparent tracking-[-0.36px] leading-[29.4px] md:text-4xl md:tracking-[-0.48px] md:leading-[35.28px]">
         {props.title}
       </h2>
       <div className="items-end box-border caret-transparent flex grow flex-wrap justify-end md:[align-items:normal] md:grow-0">
