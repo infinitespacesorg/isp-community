@@ -1,5 +1,5 @@
 ---
-# SYNCED COPY - do not edit. Edit business/marketing/website/careers/engineering-leader-cofounder.md and run `npm run sync-content`.
+# SYNCED COPY - do not edit. Generated from business/recruiting/roles/; see business/recruiting/roles/README.md.
 title: Engineering Leader & Co-founder (Games and Real-time Systems)
 department: Engineering
 location: Seattle, WA

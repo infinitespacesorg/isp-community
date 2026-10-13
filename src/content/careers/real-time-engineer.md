@@ -1,5 +1,5 @@
 ---
-# SYNCED COPY - do not edit. Edit business/marketing/website/careers/real-time-engineer.md and run `npm run sync-content`.
+# SYNCED COPY - do not edit. Generated from business/recruiting/roles/; see business/recruiting/roles/README.md.
 title: Real-time Engineer
 department: Engineering
 location: Seattle, WA

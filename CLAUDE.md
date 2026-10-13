@@ -20,7 +20,7 @@ Public community website for Infinite Spaces. React + Vite SPA deployed to Cloud
 - `npm run build` — build to `dist/`
 
 ## Content
-Copy markdown is canonical in `business/marketing/website/` (top-level `*.md` → page copy, `legal/` → legal pages, `careers/` → open roles, `blog/` → blog posts). Files in `src/content/` carry a `SYNCED COPY` banner — never edit them directly; edit the canonical source and run `npm run sync-content`.
+Copy markdown is canonical in `business/marketing/website/` (top-level `*.md` → page copy, `legal/` → legal pages, `blog/` → blog posts). Open roles come from `business/recruiting/open-positions/`, generated from the role files (see `business/recruiting/roles/README.md`); sync mirrors that folder, so a JD removed there is deleted from `src/content/careers/`. Files in `src/content/` carry a `SYNCED COPY` banner — never edit them directly; edit the canonical source and run `npm run sync-content`.
 
 ## Routes manifest
 `routes.manifest.json` (repo root) enables/disables each page per deploy environment (`staging`/`production`). Disabled routes redirect home and their header/footer/sub-nav links disappear. Env comes from `DEPLOY_ENV` at build time. CI currently builds every deploy as `staging`: isp-community.pages.dev is the staging site, and the public production site is still infinitespaces.org. A production build gets added when infinitespaces.org cuts over to this site.

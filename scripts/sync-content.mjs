@@ -4,7 +4,7 @@
 // Canonical sources (edit copy THERE):
 //   business/marketing/website/*.md          ->  src/content/*.md          (page copy)
 //   business/marketing/website/legal/*.md    ->  src/content/legal/*.md    (legal pages)
-//   business/marketing/website/careers/*.md  ->  src/content/careers/*.md  (open roles)
+//   business/recruiting/open-positions/*.md  ->  src/content/careers/*.md  (open roles; a mirror)
 //   business/marketing/website/blog/*.md     ->  src/content/blog/*.mdoc   (blog posts)
 //
 // The synced copies are committed so CI/Cloudflare builds work without the
@@ -18,7 +18,7 @@
 // Usage: npm run sync-content   (also runs automatically before npm run build)
 // Override the source root with WEBSITE_CONTENT_DIR (points at .../website).
 
-import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -56,26 +56,39 @@ function syncPages(srcDir, destDir, label) {
 syncPages(websiteDir, pagesDest, "");
 syncPages(join(websiteDir, "legal"), join(pagesDest, "legal"), "legal/");
 
-// --- Careers: careers/*.md -> src/content/careers/*.md ----------------------
-// YAML-comment banner inside the frontmatter (the careers loader parses
-// frontmatter itself). Files starting with "_" (e.g. _template.md) are skipped.
-const careersSrc = join(websiteDir, "careers");
+// --- Careers: business/recruiting/open-positions/*.md -> src/content/careers/*.md
+// Job descriptions are generated in business/recruiting (roles/generate-jds.mjs
+// writes open-positions/). This is a mirror: a JD that is no longer in
+// open-positions is deleted from src/content/careers. YAML-comment banner inside
+// the frontmatter (the careers loader parses frontmatter itself). Files starting
+// with "_" (e.g. _template.md) are skipped. When the source dir is missing (CI),
+// nothing is copied or deleted.
+// Override the source with CAREERS_CONTENT_DIR (points at .../open-positions).
+const careersSrc =
+  process.env.CAREERS_CONTENT_DIR ??
+  resolve(projectRoot, "..", "..", "business", "recruiting", "open-positions");
 const careersDest = join(projectRoot, "src", "content", "careers");
 if (existsSync(careersSrc)) {
   mkdirSync(careersDest, { recursive: true });
-  for (const file of mdFiles(careersSrc).filter((f) => !f.startsWith("_"))) {
+  const openFiles = mdFiles(careersSrc).filter((f) => !f.startsWith("_"));
+  for (const file of openFiles) {
     const body = readFileSync(join(careersSrc, file), "utf8");
-    const banner = `# SYNCED COPY - do not edit. Edit business/marketing/website/careers/${file} and run \`npm run sync-content\`.\n`;
+    const banner = `# SYNCED COPY - do not edit. Generated from business/recruiting/roles/; see business/recruiting/roles/README.md.\n`;
     let out;
     if (body.startsWith("---")) {
       const nl = body.indexOf("\n");
       out = body.slice(0, nl + 1) + banner + body.slice(nl + 1);
     } else {
-      console.warn(`[sync-content] careers/${file} has no frontmatter — copied without banner.`);
+      console.warn(`[sync-content] open-positions/${file} has no frontmatter — copied without banner.`);
       out = body;
     }
     writeFileSync(join(careersDest, file), out);
-    console.log(`[sync-content] careers/${file} -> src/content/careers/${file}`);
+    console.log(`[sync-content] open-positions/${file} -> src/content/careers/${file}`);
+    synced++;
+  }
+  for (const file of mdFiles(careersDest).filter((f) => !openFiles.includes(f))) {
+    unlinkSync(join(careersDest, file));
+    console.log(`[sync-content] removed src/content/careers/${file} (no longer in open-positions)`);
     synced++;
   }
 } else {
